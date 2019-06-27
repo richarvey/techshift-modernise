@@ -1,0 +1,10 @@
+<header role="banner">
+  <div class="wrap">
+    {{ if isset .Site.Params "logourl" }}
+      <img class="logo" src="{{ .Site.BaseURL}}{{ .Site.Params.logourl }}" alt="{{ .Site.Params.logoalt }}">
+      <br/>
+    {{ end }}
+    <h1 class="site-title"><a class="title-link" href="{{ .Site.BaseURL }}">{{ .Site.Params.home }}</a></h1>
+    <p class="site-title" style="color:#FF9900;">{{ .Site.Params.subtitle }}</p>
+  </div>
+</header>
