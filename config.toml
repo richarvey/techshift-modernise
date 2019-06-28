@@ -22,8 +22,8 @@ theme = "docter"
   logoalt = "AWS Techshift"
 
   # Mention your hosting provider 
-  hosted_on = "hosting provider"
-  hosted_on_url= "#"
+  hosted_on = "Amazon S3"
+  hosted_on_url= "https://aws.amazon.com/s3"
 
   # main sections
   # change the main section to set the directory where the top articles are sourced

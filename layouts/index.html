@@ -1,0 +1,21 @@
+{{define "main" }}
+
+<link rel="stylesheet" href="/assets/css/gh-fork-ribbon.css" />
+<a class="github-fork-ribbon" href="https://github.com/richarvey" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a> 
+
+{{ .Content }}
+
+<div id="home">
+  <h2>Posts</h2>
+  <ul class="posts">
+    {{ $section := where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ range first 5 $section }}
+      <li>
+        <a href="{{ .Page.Permalink }}">{{ .Title }}</a>
+        <span class="post-date">{{ .Date | dateFormat "Jan 2, 2006" }}</span>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+
+{{ end }}

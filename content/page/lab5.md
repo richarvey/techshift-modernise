@@ -1,6 +1,6 @@
 +++
 title= "Lab 5"
-description= ""
+description= "Removing server stickiness using Amazon DynamoDB"
 draft = false
 weight = -98
 +++
