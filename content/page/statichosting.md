@@ -4,7 +4,6 @@ description= ""
 draft = false
 weight = -103
 +++
-### Static website hosting
 
 When we talk about static website hosting we are talking about a website that has no server side code such as PHP, .Net or Ruby. When you have server side code, the server is responsible for processing code and returning HTML to the end user. The problem with this is one of scale. To serve thousands of users you need to scale the systems and have efficient code to keep up with demand.
 

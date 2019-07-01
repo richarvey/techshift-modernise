@@ -4,7 +4,6 @@ description= ""
 draft = false
 weight = -105
 +++
-### CI/CD
 
 #### What is CI?
 
