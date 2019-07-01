@@ -38,7 +38,7 @@ weight = -110
 | <img width=100/> | <img width=100/> | <img width=600/> | <img width=100/> |
 | 09:15 | 09:30 | Welcome Back / Questions | Talk |
 | 09:30 | 10:00 | Intro to Docker | Theory |
-| 10:00 | 10:40 | Run in a conta8ner (lab6) | Lab |
+| 10:00 | 10:40 | Run in a container (lab6) | Lab |
 | 10:40 | 10:55 | Break	 | Break |
 | 10:55 | 11:25 | Containers in production | Theory |
 | 11:25 | 12:05 | Deploy to Fargate (lab7) | Lab |
