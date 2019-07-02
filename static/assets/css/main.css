@@ -263,6 +263,16 @@ header {
   table-layout:fixed;
 }
 
+#scheduleTable a {
+  text-decoration: none;
+  color: #527FFF; 
+} 
+
+#scheduleTable a:hover {
+  text-decoration: none;
+  color: #2e27ad; 
+} 
+
 #scheduleTable td, #scheduleTable thead, #scheduleTable tbody {
   border: 1px solid #ddd;
   padding: 8px;
