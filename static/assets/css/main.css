@@ -251,6 +251,40 @@ header {
     padding: 2em 0;
 }
 
+/*
+ Table
+ =================================
+*/
+
+#scheduleTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#scheduleTable td, #scheduleTable thead, #scheduleTable tbody {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#scheduleTable th {
+  height: 100px;
+  border: 1px solid #ddd;
+  padding: 40px;
+}
+
+#scheduleTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#scheduleTable tr:hover {background-color: #95b0ff;}
+
+#scheduleTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #ffcc83;
+  color: #161E2D;
+}
 
 /*
 Footer
@@ -326,7 +360,7 @@ Style
 */
 
 .intro {
-    color: #75787B;
+    color: #161E2D;
 }
 
 li h4 {

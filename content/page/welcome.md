@@ -3,16 +3,17 @@ title= "Welcome"
 description= "Techshift Accelerator Modernise"
 draft = false
 weight = -110
+markup = "mmark"
 +++
 
 ### Schedule
 
-##### Day 1
+#### Day 1
 
+{#scheduleTable}
 | Start Time | End Time | Title | Session Type |
-| :----------: | :---------:| :----- | :-------------:|
-| <img width=100/> | <img width=100/> | <img width=600/> | <img width=100/> |
-| 09:00 |	09:30 |Registration, account creation, command line setup and $50 credit setup (lab1) | Talk/Lab |
+| :----------: | :---------:| :----- | :------------ |
+| 9:00 | 9:30 | Registration, account creation, command line setup and $50 credit setup (lab1) | Talk/Lab |
 | 09:30 | 09:45	 | Intro Talk | Talk | 
 | 09:45 | 10:05	 | What is TechShift Accelerate | Talk |
 | 10:05 | 10:15	 | Intro to the labs | Theory |
@@ -31,11 +32,12 @@ weight = -110
 | 16:05 | 16:35 | DynamoDB as our new cache (lab5) | Lab |
 | 16:35 | 17:05 | Wrap up / Questions	| Talk |
 
-##### Day 2
 
+#### Day 2
+
+{#scheduleTable}
 | Start Time | End Time | Title | Session Type |
-| :----------: | :---------:| :----- | :-------------:|
-| <img width=100/> | <img width=100/> | <img width=600/> | <img width=100/> |
+| :----------: | :---------:| :----- | :------------ |
 | 09:15 | 09:30 | Welcome Back / Questions | Talk |
 | 09:30 | 10:00 | Intro to Docker | Theory |
 | 10:00 | 10:40 | Run in a container (lab6) | Lab |
