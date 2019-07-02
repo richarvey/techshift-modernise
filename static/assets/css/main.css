@@ -260,6 +260,7 @@ header {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  table-layout:fixed;
 }
 
 #scheduleTable td, #scheduleTable thead, #scheduleTable tbody {
@@ -271,7 +272,7 @@ header {
 #scheduleTable th {
   height: 100px;
   border: 1px solid #ddd;
-  padding: 40px;
+  padding: 16px;
 }
 
 #scheduleTable tr:nth-child(even){background-color: #f2f2f2;}
