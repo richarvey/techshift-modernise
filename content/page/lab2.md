@@ -4,25 +4,27 @@ description= "Improving your solution with a landing zone and CI/CD"
 draft = false
 weight = -105
 +++
+### Objectives
 
-## Objectives
 The objective of this lab is build a solid base we can use to modernise your application. This lab includes:
 
- - Updating our CloudFormation template to include the additional Availability Zones and add private Subnets to host our private resources.
- - Using S3 as a versioned repository for our CloudFormation templates.
- - Using CodePipeline to deploy our updated CloudFormation template into our VPC.
+- Updating our CloudFormation template to include the additional Availability Zones and add private Subnets to host our private resources.
+- Using S3 as a versioned repository for our CloudFormation templates.
+- Using CodePipeline to deploy our updated CloudFormation template into our VPC.
 
-### Lab Guide
-Login to your AWS Console.
+#### Lab Guide
 
-Ensure you have selected the region you are using for this program.
-Updating the CloudFormation Template
-Open the CloudFormation template you downloaded in the previous lab in your favourite text editor. If you don't have a text editor, Visual Studio Code is a good programmers editor. If can be downloaded from https://code.visualstudio.com/ for both Windows, Mac and Linux. If you don't have the template, it can be copied from the Lab 1 documentation.
-Add a second public subnet on between PublicSubnetA and 
+1) Login to your AWS Console.
 
+2) Ensure you have selected the region you are using for this program.
+
+#### Updating the CloudFormation Template
+
+3) Open the CloudFormation template you downloaded in the previous lab in your favourite text editor. If you don't have a text editor, Visual Studio Code is a good programmers editor. If can be downloaded from https://code.visualstudio.com/ for both Windows, Mac and Linux. If you don't have the template, it can be copied from the Lab 1 documentation.
+
+4) Add a second public subnet on between PublicSubnetA and PublicRouteTable
 
 ```
-PublicRouteTable
   PublicSubnetB:
     Type: AWS::EC2::Subnet
     Properties:
@@ -37,10 +39,9 @@ PublicRouteTable
           Value: !Join ['', [!Ref 'AWS::StackName', '::PublicSubnetB'] ]
 ```
 
-Associate the public routing table to the new public subnet between 
+5) Associate the public routing table to the new public subnet between PublicSubnetARouteTableAssociation and PublicSecurityGroup
 
 ```
-PublicSubnetARouteTableAssociation and PublicSecurityGroup
   PublicSubnetBRouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
@@ -48,7 +49,7 @@ PublicSubnetARouteTableAssociation and PublicSecurityGroup
       SubnetId: !Ref PublicSubnetB
 ```
 
-Add our private Subnets, Route tables and Security Groups between PublicSecurityGroup and ServerRole
+6) Add our private Subnets, Route tables and Security Groups between PublicSecurityGroup and ServerRole
 
 ```
 #Private Subnet
@@ -113,24 +114,25 @@ Add our private Subnets, Route tables and Security Groups between PublicSecurity
           Value: !Join ['', [!Ref 'AWS::StackName', '::PrivateSecurityGroup'] ]
 ```
 
-Save your changes. You can use [https://text-compare.com/](https://text-compare.com/) to compare your version with the updated version of the CloudFormation template at the bottom of this document.
+7) Save your changes. You can use https://text-compare.com/ to compare your version with the updated version of the CloudFormation template at the bottom of this document.
 
-Deploy the CloudFormation changes using CodePipeline
+#### Deploy the CloudFormation changes using CodePipeline
+
 In order to deploy the CloudFormation changes for our TSAGallery we will be using CodePipeline, however as we are embracing infrastructure as code, we will setup the CodePipeline using CloudFormation. This will be our BootStrap stack with which we can then automate the remainder of our environment.
 
-Create the BootStrap CloudFormation template
+#### Create the BootStrap CloudFormation template
 
-Create a new blank document in your favourite text editor. Add each of the following sections to the end of the document.
+8) Create a new blank document in your favourite text editor. Add each of the following sections to the end of the document.
 
 __Note:__ Indentation is important in CloudFormation and the code snipits must be copied exactly as they appear, including leading spaces.
 
-Add the CloudFormation version line.
+9) Add the CloudFormation version line.
 
 ```
 AWSTemplateFormatVersion: 2010-09-09
 ```
 
-Add the parameters that will control the creation of the resources:
+10) Add the parameters that will control the creation of the resources:
 
 - KeyName and SSHLocation will be used as a parameter for the main template we edited above.
 - ChildStackName is the name of the stack used to initalise your account. This will be TSAGallery unless you changed it in Lab0.
@@ -168,7 +170,7 @@ Parameters:
     Default: tsagallery.companyname.com
 ```
 
-Add the first resource, a new IAM role that will be used by CloudFormation and CodePipeline to manage your main stack.
+11) Add the first resource, a new IAM role that will be used by CloudFormation and CodePipeline to manage your main stack.
 
 ```
 Resources:
@@ -193,10 +195,9 @@ Resources:
               - Effect: Allow
                 Action: "*"
                 Resource: "*"
-                
 ```
 
-Add the two S3 buckets we will need. The first is our data bucket. This will store all the assets for the system. The second is used by CodePipeline to store artifacts during the pipeline execution.
+12) Add the two S3 buckets we will need. The first is our data bucket. This will store all the assets for the system. The second is used by CodePipeline to store artifacts during the pipeline execution.
 
 ```
   StackData: 
@@ -210,7 +211,7 @@ Add the two S3 buckets we will need. The first is our data bucket. This will sto
     Type: AWS::S3::Bucket
 ```
 
-Add the CodePipeline body.
+13) Add the CodePipeline body.
 
 ```
   Pipeline:
@@ -223,8 +224,8 @@ Add the CodePipeline body.
       RoleArn: !GetAtt [PipelineRole, Arn]
       Stages:
 ```
-      
-Add a stage to pull the updates from the metadata bucket as the source.
+
+14) Add a stage to pull the updates from the metadata bucket as the source.
 
 ```
         -
@@ -245,8 +246,8 @@ Add a stage to pull the updates from the metadata bucket as the source.
               OutputArtifacts:
                 - Name: SourceArtifact
 ```
-     
-Add a stage to deploy the SourceArtifact using CloudFormation. a SourceArtifact is the name given to the source template inside CodePipeline.
+
+15) Add a stage to deploy the SourceArtifact using CloudFormation. a SourceArtifact is the name given to the source template inside CodePipeline.
 
 ```
         -
@@ -280,7 +281,7 @@ Add a stage to deploy the SourceArtifact using CloudFormation. a SourceArtifact 
                     SSHLocation: !Ref SSHLocation
 ```
 
-Lastly, we need to add an output. This will allow us to refer to the data bucket in our other CloudFormation Templates.
+16) Lastly, we need to add an output. This will allow us to refer to the data bucket in our other CloudFormation Templates.
 
 ```
 Outputs:
@@ -289,88 +290,89 @@ Outputs:
     Value: !Ref DataBucketName
     Export:
       Name: !Sub "TSAGallery-DataBucket"
-```     
+```
 
 __Note:__ Why do we export the bucket name, but use parameters for the KeyName and SSHLocation? We want to be able to use the same CloudFormation templates for both production and non-production stacks so we ensure the infrastructure is consistant. As the data location would be shared, we can just export the value and import as needed. Non-production stacks should have a seperate key as developers may use thier own keys, and the SSH location could be a more relaxed range of IPs.
 
-Save that file as bootstrap.yaml. The full file can be found at the bottom of this document.
+17) Save that file as bootstrap.yaml. The full file can be found at the bottom of this document.
 
-Back in the AWS Console, select the CloudFormation service.
-You will need the Key name and SSHLocation for your TSAGallery stack. To find these values;
+18) Back in the AWS Console, select the CloudFormation service.
+
+19) You will need the Key name and SSHLocation for your TSAGallery stack. To find these values;
 
 - Open the AWS Console in a new window.
 - Select the CloudFormation service.
 - Select the TSAGallery stack and click the Parameters tab.
 - The two values needed are listed and should be copied into a tempory file.
 
-Click Create stack.
+20) Click Create stack.
 
-Select Upload a template file and Choose file. Select the file you saved in step 17. Then click Next.
+21) Select Upload a template file and Choose file. Select the file you saved in step 17. Then click Next.
 
-Enter TSABootstrap as the Stack name.
+22) Enter TSABootstrap as the Stack name.
 
-Leave the ChildStackName as TSAGallery unless you changed the main stack name in Lab 1.
+23) Leave the ChildStackName as TSAGallery unless you changed the main stack name in Lab 1.
 
-Select the KeyName that matches the Key name in step 19.
+24) Select the KeyName that matches the Key name in step 19.
 
-Enter a DataBucketName bucket name such as tsagallery.companyname.com. Bucket names must be globally unique. 
+25) Enter a DataBucketName bucket name such as tsagallery.companyname.com. Bucket names must be globally unique. One way of ensuring global uniqueness, is to use a DNS name such as tsa-infrastructure.companyname.com. Make a note of this name as you will need it later.
 
-One way of ensuring global uniqueness, is to use a DNS name such as tsa-infrastructure.companyname.com. Make a note of this name as you will need it later.
+26) Leave the SSHLocation as 0.0.0.0/0 unless it was changed. See step 19.
 
-Leave the SSHLocation as 0.0.0.0/0 unless it was changed. See step 
+27) Click Next.
 
-Click Next.
+28) On the Configure stack options page, scroll to the bottom and click Next.
 
-On the Configure stack options page, scroll to the bottom and click Next.
+29) On the Review TSA-Bootstrap page, scroll to the bottom. Click the I acknowledge that AWS CloudFormation might create IAM resources. options and click Create stack.
 
-On the Review TSA-Bootstrap page, scroll to the bottom. Click the I acknowledge that AWS CloudFormation might create IAM resources. options and click Create stack.
+#### Deploy the new infra.yaml
 
-Deploy the new infra.yaml
+30) Using your local computer, create a zip file containing the updated infra.yaml.
 
-Using your local computer, create a zip file containing the updated infra.yaml.
+31) Select the S3 service.
 
-Select the S3 service.
+32) Select the bucket with the name from the DataBucketName in step 24.
 
-Select the bucket with the name from the DataBucketName in step 24.
+33) Click Create Folder. Enter the folder name cloudformation and click Save. Note: The folder name must be all lowercase
 
-Click Create Folder. Enter the folder name cloudformation and click Save. Note: The folder name must be all lowercase
+34) Click on the new cloudformation folder to open it.
 
-Click on the new cloudformation folder to open it.
+35) Click Upload and drop the Infra.yaml.zip file from step 30 onto the upload screen. Click Upload.
 
-Click Upload and drop the Infra.yaml.zip file from step 30 onto the upload screen. Click Upload.
+36) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
-Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+#### Confirm the changes
 
-Confirm the changes
-
-Select the CloudFormation service, select the TSAGallery stack and click the Resources tab.
+37) Select the CloudFormation service, select the TSAGallery stack and click the Resources tab.
 
 You should now be able to see PublicSubnetB, PrivateSubnetA and PrivateSubnetB, along with the supporting route tables and security groups.
 
-#### Wrap-up
+### Wrap-up
 
 In this lab you not only used CloudFormation to setup the landing zone you will use for the remainder of the labs, you also used CodePipeline to automate the deployment of these changes. We will continue to use this Pipeline as we add more services and resources to your account.
-Talking points
+
+### Talking points
 
 - We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints.
 - Two availablity zones provides high availability, how can we use more availability zones to provide fault tollerance.
 
-#### Cleanup
+###Cleanup
 
 To remove the resources you have created thus far:
 
-Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts bucket. This will named like tsa-bootstrap-pipelineartifacts-?????. You can empty a bucket using the Empty button after selecting the bucket in S3.
+1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts bucket. This will named like tsa-bootstrap-pipelineartifacts-?????. You can empty a bucket using the Empty button after selecting the bucket in S3.
 
-Select the CloudFormation service.
+2) Select the CloudFormation service.
 
-Select the TSAGallery stack by clicking the selection circle. The row will highlight blue.
+3) Select the TSAGallery stack by clicking the selection circle. The row will highlight blue.
 
-Using the Actions menu, select Delete stack.
+4) Using the Actions menu, select Delete stack.
 
-When prompted, click Delete.
+5) When prompted, click Delete.
+
 This will delete all the resources that were created using the main CloudFormation template.
 
-Use the same Delete stack method used on the TSAGallery stack to delete the TSA-Bootstrap stack.
+6) Use the same Delete stack method used on the TSAGallery stack to delete the TSA-Bootstrap stack.
 
 #### Assets
 
