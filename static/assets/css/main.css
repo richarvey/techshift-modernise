@@ -134,7 +134,7 @@ a:focus {
 }
 
 a.title-link {
-    color: #75787B;
+    color: #232F3E;
     border-bottom: none;
 }
 
@@ -175,14 +175,14 @@ Navigation
 .sidebar-nav a:link,
 .sidebar-nav a:visited {
   border-bottom: none;
-  color: #75787b;
+  color: #232F3E;
 }
 .sidebar-nav li:hover,
 .sidebar-nav a:focus,
 .sidebar-nav li:active,
 .sidebar-nav .sidebar-nav-active {
-  color: #75787b;
-  border-left: 4px solid #2e27ad;
+  color: #161E2D;
+  border-left: 4px solid #FF9900;
   background-color: transparent;
   border-bottom: 1px solid #babbbd;
 }
@@ -270,7 +270,7 @@ header {
 
 
 #scheduleTable th {
-  height: 80px;
+  height: 60px;
   border: 1px solid #ddd;
   padding: 16px;
 }
@@ -396,7 +396,7 @@ ul.posts {
 }
 
 .post-date {
-    color: #75787B;
+    color: #232F3E;
 }
 
 /*
