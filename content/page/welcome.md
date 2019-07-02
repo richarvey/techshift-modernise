@@ -2,9 +2,27 @@
 title= "Welcome"
 description= "Techshift Accelerator Modernise"
 draft = false
-weight = -110
+weight = -111
 markup = "mmark"
 +++
+### About
+
+#### What is TechShift?
+
+Techshift is a multi-phased program for ISV’s to accelerate the transformation of their solutions to the cloud.
+
+![/img/techshift0.png](/img/techshift0.png)
+
+### Why take part?
+
+- Technical Workshops to train your development team
+- Access to a Solution Architects to validate your solution
+- Sandbox Credits to build and test your solutions
+- Access to a Success Manger to build a GTM Plan
+
+#### Benefits
+
+![/img/techshift1.png](/img/techshift1.png)
 
 ### Schedule
 
@@ -52,3 +70,31 @@ markup = "mmark"
 | 15:10 | 15:25 | Break | 	Break |
 | 15:25 | 15:45 | Are we well architectured | Theory |
 | 15:45 | 15:55 | House keeping / next steps | Talk |
+
+### The labs
+
+The modernise lab's are intended to guide you through AWS products and services that will allow your business to deliver its services to your customers in a smooth and streamlined way whilst minimising the overhead of running large scale systems, through operational excellence and efficieny. They are split into two main sections:
+
+- Theory
+- Labs
+
+The theory sections are designed to quickly introduce or remind you of core concepts and products from AWS in modern cloud applications. If you feel confident with those topics feel free to read ahead.
+
+The labs are hands on sessions in which you'll put the tehory to use and deploy through itterative cloudformation templates a full solution.
+
+### Layout
+
+The site is designed to hightlight code blocks in a simple way. They are shown as below:
+
+```
+This is a code block
+
+```
+
+Important informationis highlighted as __Notes:__
+
+Lists are defined as:
+
+- item 1
+- item 2
+- etc.....
