@@ -13,12 +13,12 @@ The objective of this lab is build a solid base we can use to modernise your app
  - Using CodePipeline to deploy our updated CloudFormation template into our VPC.
 
 ### Lab Guide
-Login to your AWS Console.
+#### Login to your AWS Console.
 
 Ensure you have selected the region you are using for this program.
 Updating the CloudFormation Template
 Open the CloudFormation template you downloaded in the previous lab in your favourite text editor. If you don't have a text editor, Visual Studio Code is a good programmers editor. It can be downloaded from https://code.visualstudio.com/ for Windows, Mac and Linux. If you don't have the template, it can be copied from the Lab 1 documentation.
-Add a second public subnet in between PublicSubnetA and 
+Add a second public subnet in between PublicSubnetA and PublicRouteTable
 
 
 ```
@@ -115,14 +115,14 @@ Add our private Subnets, Route tables and Security Groups between PublicSecurity
 
 Save your changes. You can use [https://text-compare.com/](https://text-compare.com/) to compare your version with the updated version of the CloudFormation template at the bottom of this document.
 
-Deploy the CloudFormation changes using CodePipeline
+#### Deploy CloudFormation changes using CodePipeline
 In order to deploy the CloudFormation changes for our TSAGallery we will be using CodePipeline, however as we are embracing infrastructure as code, we will setup the CodePipeline using CloudFormation. This will be our BootStrap stack with which we can then automate the remainder of our environment.
 
-Create the BootStrap CloudFormation template
+##### Create the BootStrap CloudFormation template
 
 Create a new blank document in your favourite text editor. Add each of the following sections to the end of the document.
 
-__Note:__ Indentation is important in CloudFormation and the code snipits must be copied exactly as they appear, including leading spaces.
+__Note:__ Indentation is important in CloudFormation and the code snippets must be copied exactly as they appear, including leading spaces.
 
 Add the CloudFormation version line.
 
@@ -291,9 +291,9 @@ Outputs:
       Name: !Sub "TSAGallery-DataBucket"
 ```     
 
-__Note:__ Why do we export the bucket name, but use parameters for the KeyName and SSHLocation? We want to be able to use the same CloudFormation templates for both production and non-production stacks so we ensure the infrastructure is consistant. As the data location would be shared, we can just export the value and import as needed. Non-production stacks should have a seperate key as developers may use thier own keys, and the SSH location could be a more relaxed range of IPs.
+__Note:__ Why do we export the bucket name, but use parameters for the KeyName and SSHLocation? We want to be able to use the same CloudFormation templates for both production and non-production stacks so we ensure the infrastructure is consistent. As the data location would be shared, we can just export the value and import as needed. Non-production stacks should have a seperate key as developers may use thier own keys, and the SSH location could be a more relaxed range of IPs.
 
-Save that file as bootstrap.yaml. The full file can be found at the bottom of this document.
+Save that file as <b>bootstrap.yaml</b>. The full file can be found at the bottom of this document.
 
 Back in the AWS Console, select the CloudFormation service.
 You will need the Key name and SSHLocation for your TSAGallery stack. To find these values;
@@ -301,7 +301,7 @@ You will need the Key name and SSHLocation for your TSAGallery stack. To find th
 - Open the AWS Console in a new window.
 - Select the CloudFormation service.
 - Select the TSAGallery stack and click the Parameters tab.
-- The two values needed are listed and should be copied into a tempory file.
+- The two values needed are listed and should be copied into a temporary file.
 
 Click Create stack.
 
@@ -333,11 +333,10 @@ Select the S3 service.
 
 Select the bucket with the name from the DataBucketName in step 24.
 
-Click Create Folder. Enter the folder name cloudformation and click Save. Note: The folder name must be all lowercase
+Click Create Folder. Enter the folder name "cloudformation" and click Save. Note: The folder name must be all lowercase
 
-Click on the new cloudformation folder to open it.
-
-Click Upload and drop the Infra.yaml.zip file from step 30 onto the upload screen. Click Upload.
+Click on the new "cloudformation" folder to open it.
+Click Upload and drop the <b>Infra.yaml.zip</b> file from step 30 onto the upload screen. Click Upload.
 
 Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
@@ -353,7 +352,7 @@ In this lab you not only used CloudFormation to setup the landing zone you will 
 Talking points
 
 - We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints.
-- Two availablity zones provides high availability, how can we use more availability zones to provide fault tollerance.
+- Two availability zones provides high availability, how can we use more availability zones to provide fault tolerance.
 
 #### Cleanup
 
