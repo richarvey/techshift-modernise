@@ -12,6 +12,10 @@ The objective of this lab is to move the session cache from an in-proc provider 
 - Update CF Template to include the DynamoDB table
 - Update the application code to use the new cache
 
+#### Reference Architecture
+
+![/img/arch/arch5.png](/img/arch/arch5.png)
+
 ### Lab Guide
 
 #### Add a DynamoDB table to CloudFormation

@@ -16,6 +16,10 @@ As we will be using a SNS (Simple Notification Service) topic to handle adding a
 - Add an additional SQS queue and Lambda processor for the AI/ML processor
 - Upload a new image to confirm everything is working
 
+#### Reference Architecture
+
+![/img/arch/arch8.png](/img/arch/arch8.png)
+
 ### Lab Guide
 
 #### Setup SNS and SQS Queues

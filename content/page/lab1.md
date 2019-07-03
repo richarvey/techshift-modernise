@@ -8,7 +8,12 @@ weight = -109
 ### Objectives
 
 The objective of this lab is to get your account setup ready for the TechShift Accelerate - Modernise labs.
-Lab Guide
+
+#### Reference Architecture
+
+![/img/arch/arch1.png](/img/arch/arch1.png)
+
+### Lab Guide
 
 #### Login to your AWS Console.
 

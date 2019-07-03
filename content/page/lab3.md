@@ -15,6 +15,10 @@ The objective of this lab is move the static portions of the solution from the a
 - Copy our image assets to our asset S3 bucket.
 - Update our application to store phsical assets such as thumbnails and images in the S3 bucket.
 
+#### Reference Architecture
+
+![/img/arch/arch3.png](/img/arch/arch3.png)
+
 ### Lab Guide
 
 1) Login to your AWS Console.

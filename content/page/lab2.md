@@ -12,6 +12,10 @@ The objective of this lab is build a solid base we can use to modernise your app
 - Using S3 as a versioned repository for our CloudFormation templates.
 - Using CodePipeline to deploy our updated CloudFormation template into our VPC.
 
+#### Reference Architecture
+
+![/img/arch/arch2.png](/img/arch/arch2.png)
+
 #### Lab Guide
 
 1) Login to your AWS Console.

@@ -14,6 +14,10 @@ The objective of this lab is move our database off the single instance to highly
 - Import the data into Aurora Serverless
 - Update the code to use the new database
 
+#### Reference Architecture
+
+![/img/arch/arch4.png](/img/arch/arch4.png)
+
 ### Lab Guide
 
 #### Add Aurora Serverless to CloudFormation

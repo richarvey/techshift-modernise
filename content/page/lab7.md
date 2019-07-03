@@ -13,6 +13,10 @@ The objective of this lab is to take our new docker image and host it using ECS 
 - Update our CodePipeline to update Fargate when our code changes
 - Finally, turn off the initial web server as we don't need it any more
 
+#### Reference Architecture
+
+![/img/arch/arch7.png](/img/arch/arch7.png)
+
 ### Lab Guide
 
 #### Setup Fargate

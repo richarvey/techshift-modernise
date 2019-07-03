@@ -14,6 +14,10 @@ The objective of this lab is to take our existing server based API and build it 
 - Test the image on a temporary EC2 instance
 - Remove the temporary instance to avoid ongoing costs
 
+#### Reference Architecture
+
+![/img/arch/arch6.png](/img/arch/arch6.png)
+
 ### Lab Guide
 
 #### Setup an Elastic Cloud Repository (ECR)
