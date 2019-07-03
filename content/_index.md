@@ -6,9 +6,9 @@ title= "pages"
 
 The TechShift Accelerator program is for Independent Software Vendors (ISVs) to accelerate the transformation of their solutions to the AWS cloud.
 
- 
-Through a series of technical workshops, access to specialist personnel and co-investments from AWS, the objective is to programmatically re-platform applications in a time bound way to ensure customers can easily and quickly launch your software in the cloud.
+Through a series of technical workshops, access to specialist personnel and co-investments from AWS, the objective is to programmatically re-platform applications in a time bound way to ensure customers can easily and quickly launch your software in the cloud. The series consists of migrate, modernise and SaaS.
 
+![/img/acc0.png](/img/acc0.png)
 
 ## Why you should join?
 
