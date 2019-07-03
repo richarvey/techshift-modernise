@@ -360,7 +360,7 @@ In this lab you not only used CloudFormation to setup the landing zone you will 
 - We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints.
 - Two availablity zones provides high availability, how can we use more availability zones to provide fault tollerance.
 
-###Cleanup
+### Cleanup
 
 To remove the resources you have created thus far:
 
