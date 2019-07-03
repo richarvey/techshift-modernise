@@ -17,8 +17,8 @@ Login to your AWS Console.
 
 Ensure you have selected the region you are using for this program.
 Updating the CloudFormation Template
-Open the CloudFormation template you downloaded in the previous lab in your favourite text editor. If you don't have a text editor, Visual Studio Code is a good programmers editor. If can be downloaded from https://code.visualstudio.com/ for both Windows, Mac and Linux. If you don't have the template, it can be copied from the Lab 1 documentation.
-Add a second public subnet on between PublicSubnetA and 
+Open the CloudFormation template you downloaded in the previous lab in your favourite text editor. If you don't have a text editor, Visual Studio Code is a good programmers editor. It can be downloaded from https://code.visualstudio.com/ for Windows, Mac and Linux. If you don't have the template, it can be copied from the Lab 1 documentation.
+Add a second public subnet in between PublicSubnetA and 
 
 
 ```
