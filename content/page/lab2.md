@@ -1,6 +1,6 @@
 +++
 title= "Lab 2"
-description= "Improving your solution with a landing zone and CI/CD"
+description= "Improving your solution CI/CD"
 draft = false
 weight = -105
 +++

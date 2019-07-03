@@ -14,11 +14,10 @@ markup = "mmark"
 | Start Time | End Time | Title | Session Type |
 | :----------: | :---------:| :----- | :------------ |
 | 9:00 | 9:30 | <a href="/page/lab1/" id="#scheduleTable">Registration, account creation, command line setup and $50 credit setup (lab1)</a> | Talk/Lab |
-| 09:30 | 09:45	 | Intro Talk | Talk | 
-| 09:45 | 10:05	 | What is TechShift Accelerate | Talk |
-| 10:05 | 10:15	 | Intro to the labs | Theory |
-| 10:15 | 10:45 | 	Landing Zones	 | Theory |
-| 10:45 | 11:00 | Break | Break |
+| 09:30 | 10:00	 | Intro Talk | Talk | 
+| 10:00 | 10:15	 | What is TechShift Accelerate | Talk |
+| 10:15 | 10:30	 | Intro to the labs | Theory |
+| 10:30 | 11:00 | Break | Break |
 | 11:00 | 11:30 | Infrastructure as Code | Theory |
 | 11:30 | 12:00 | CI/CD | Theory |
 | 12:00 | 12:20	 | <a href="/page/lab2/">Set up a solid base to build into (lab2)</a> | Lab |
