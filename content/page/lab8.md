@@ -9,9 +9,9 @@ weight = -92
 
 The objective of this lab is to decouple the thumbnail creation from our server so it does not block the user using the site.
 
-As we will be using a SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generator's queue, we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Rekognition service to process our images and generate tags. This lab includes:
+As we will be using a SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generators queue, we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Amazon Rekognition service to process our images and generate tags. This lab includes:
 
-- Update our Cloudformation Template to include an SNS topic, an SQS queue and the Lambda processor
+- Update our CloudFormation Template to include an SNS topic, an SQS queue and the Lambda processor
 - Update our site code to remove the thumbnail creation logic and publish a message onto the SNS topic
 - Add an additional SQS queue and Lambda processor for the AI/ML processor
 - Upload a new image to confirm everything is working
@@ -24,7 +24,7 @@ As we will be using a SNS (Simple Notification Service) topic to handle adding a
 
 #### Setup SNS and SQS Queues
 
-We will be sending messages from the web server to the lambda workers using SNS (Simple Notification Service) and SQS (Simple Queuing Service). After the webserver has saved a new image into S3, it will create a new image message and publish this to an SNS topic. SNS will then take the published message and send it to each of the subscribed recievers. In our case, we will be pushing the message into 2 SQS queues. However, SNS can push the message to many more subscribed recievers (up to limit of 12,500,000) if we wanted more processes to run on each new image. Using a seperate SQS queue for each processor means that each process gets an independant copy of the message. If one of the processors started to fail, all other subscribed processors would continue to run independantly.
+We will be sending messages from the web server to the lambda workers using SNS (Simple Notification Service) and SQS (Simple Queue Service). After the webserver has saved a new image into S3, it will create a new image message and publish this to an SNS topic. SNS will then take the published message and send it to each of the subscribed receivers. In our case, we will be pushing the message into 2 SQS queues. However, SNS can push the message to many more subscribed receivers (up to limit of 12,500,000) if we wanted more processes to run on each new image. Using a separate SQS queue for each processor means that each process gets an independent copy of the message. If one of the processors started to fail, all other subscribed processors would continue to run independently.
 
 Firstly we will create the new SNS topic and SQS queues.
 
@@ -49,7 +49,7 @@ Firstly we will create the new SNS topic and SQS queues.
       DisplayName: !Join ['', [!Ref 'AWS::StackName', 'NewImageTopic'] ]
 ```
 
-4) So messages get forwarded from the SNS topic through to the SQS Queues, we need a subscription. Add the two following two subscriptions between the NewImageTopic and tje Outputs sections.
+4) So messages get forwarded from the SNS topic through to the SQS Queues, we need a subscription. Add the two following two subscriptions between the NewImageTopic and the Outputs sections.
 
 ```
   ThumbnailSubscription:
@@ -104,7 +104,7 @@ For the two Lambda processors, we will be uploading the source using a zip file.
  - [Tags Processor Source](/assets/downloads/tags.zip)
  - [Thumbnail Processor Source](/assets/downloads/thumbnails.zip)
 
-The source can be viewed by extracting the zip file and openeing the index.js file in a text editor. When Lambda executes the function it calles the function specifed in the Lambda setup. In our case the handler is the exported function called handler.
+The source can be viewed by extracting the zip file and opening the index.js file in a text editor. When Lambda executes the function it calls the function specified in the Lambda setup. In our case the handler is the exported function called handler.
 
 7) In the AWS console, select the S3 service. Open the DataBucket by clicking on the DataBucket name. Click Create folder and when prompted, enter the name lambda-source and click Save. Open the lambda-source folder by clicking the folder name.
 
@@ -245,7 +245,7 @@ We are giving the Lambda the following permissions:
 
 18) Again we need to update the config. If the config.js file is not open, double click on the file to re-open it. Add a new line at the end of line 7.
 
-19) Add the following value to the new blank line 8. You will need to replace teh SNS-TOPIC-ARN with the SNS ARN you found on step 16.
+19) Add the following value to the new blank line 8. You will need to replace the SNS-TOPIC-ARN with the SNS ARN you found on step 16.
 
 ```
       newImageSNS: process.env.NEWIMAGESNS || 'SNS-TOPIC-ARN',
@@ -253,7 +253,7 @@ We are giving the Lambda the following permissions:
 
 20) The updated routing code for sending new images to the SNS topic along with an endpoint used by the Lambda functions can be found in the images.lab8.js file in the routes folder. Take some time to review the code. The POST function on line 87 has been updated so that new images are first saved into S3, then a message is published to the SNS topic. The SNS topic will then distribute the message to the two SQS queues that will invoke the Lambda functions.
 
-The ThumbnailLambda function will use the uploaded image and generate the thumbnail. The TagsLambda takes the uploaded image and sends it to AWS Rekognition for object detection. Detected objects are used to update the image tags.
+The ThumbnailLambda function will use the uploaded image and generate the thumbnail. The TagsLambda takes the uploaded image and sends it to Amazon Rekognition for object detection. Detected objects are used to update the image tags.
 
 We have also added a new endpoint on line 154 that allows the Lambda function to update an image tags while still keeping all the database access in the main project.
 
@@ -283,17 +283,17 @@ git push
 
 26) Click the + at the bottom of the screen to upload a new image. When prompted, enter a name and use the Choose file button to select a new image. Click Upload to upload the new image.
 
-27) The image will upload. The photo gallery will show the uploaded image, but without the tags or thumbnail. As the process is running in the background, click Refresh in your browser. After about 20 seconds, the thumbnail will appear. After a minute or so, the tags will be updated based on the output of Rekognition.
+27) The image will upload. The photo gallery will show the uploaded image, but without the tags or thumbnail. As the process is running in the background, click Refresh in your browser. After about 20 seconds, the thumbnail will appear. After a minute or so, the tags will be updated based on the output of Amazon Rekognition.
 
 ### Wrap-up
 
-In this lab we have taken the application and decomposed it by moving the thumbnail generation into a Lambda. We used SNS and SQS to message the Lambda that there is a new image to be processed. As a bonus, we added some AI / Machine learning by using the AWS Rekognition service to detect objects in the image and update the tags.
+In this lab we have taken the application and decomposed it by moving the thumbnail generation into a Lambda. We used SNS and SQS to message the Lambda that there is a new image to be processed. As a bonus, we added some AI / Machine learning by using the Amazon Rekognition service to detect objects in the image and update the tags.
 
 ### Talking points
 
 - How could update the SPA to automatically load the new thumbnail and tags?
 
-#### Cleanup
+#### Clean-up
 
 To remove the resources you have created thus far:
 
@@ -318,7 +318,7 @@ This will delete all the resources that were created using the main CloudFormati
 - Select the RDS service.
 - Select Snapshots from the left hand menu.
 - Check the tickbox next to each snapshot you wish to delete, and click Actions then Delete Snapshot.
-- When prompted, click Delete to delete the snpashots.
+- When prompted, click Delete to delete the snapshots.
 
 ### Assets
 
