@@ -30,6 +30,7 @@ Spread over 2 consecutive days, this workshop is part of a phased program aimed 
 - Amazon DynamoDB
 - Amazon Aurora
 - Amazon Simple Queue Service (SQS)
+- Amazon Simple Notification Service (SNS)
 - Amazon ElastiCache
 - Amazon Elastic Container Service (ECS) with AWS Fargate and containers
 - AWS Lambda
