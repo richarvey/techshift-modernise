@@ -7,7 +7,7 @@ weight = -100
 
 ### Objectives
 
-The objective of this lab is move our database off the single instance to highly available and fault tollerant serverless database. This lab includes:
+The objective of this lab is move our database off the single instance to highly available and fault tolerant serverless database. This lab includes:
 
 - Update CF Template to include Aurora Serverless
 - Export data from our single instance
@@ -93,7 +93,7 @@ The objective of this lab is move our database off the single instance to highly
       - DatabaseSecret
 ```
 
-5) In order for the webserver to read the secret value, we need to give the servers role a new policy documnet. In the ServerRole, directly above the RoleName, add a new line and copy the new policy in.
+5) In order for the webserver to read the secret value, we need to give the servers role a new policy document. In the ServerRole, directly above the RoleName, add a new line and copy the new policy in.
 
 ```
         -
@@ -144,7 +144,7 @@ When prompted, you need to copy and paste the password from step 11.
 mysql -u admin -p -h HOSTNAME DATABASE_NAME < dump.sql
 ```
 
-#### Update the application to use the Aruora database
+#### Update the application to use the Aurora database
 
 15) Select the Cloud9 service and click Open IDE to re-open the editor.
 
@@ -259,11 +259,11 @@ In this lab we have setup a servlerless database cluster, migrated our data into
 
 ### Talking points
 
-- Using DMS (Database Migration Service) for more advanced data migrations.
+- Using DMS (Database Migration Service) for more advanced data migrations
 - Using the Data API
-- Why Aurora serverless shuts down and how to handle it more gracefully.
+- Why does Aurora serverless shuts down? can you handle it more gracefully?
 
-### Cleanup
+### Clean-up
 
 To remove the resources you have created thus far:
 
@@ -288,7 +288,7 @@ This will delete all the resources that were created using the main CloudFormati
 - Select the RDS service.
 - Select Snapshots from the left hand menu.
 - Check the tickbox next to each snapshot you wish to delete, and click Actions then Delete Snapshot.
-- When prompted, click Delete to delete the snpashots.
+- When prompted, click Delete to delete the snapshots.
 
 ### Assets
 
