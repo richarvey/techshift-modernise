@@ -14,25 +14,30 @@ Through a series of technical workshops, access to specialist personnel and co-i
 
 - Your customers are seeking a flexible, cloud model
 - You are interested in deploying your existing solutions on AWS, with zero or minimal application changes
-- You intend to move to a SaaS model in you long-term plan but are taking a phased approach to cloud adoption.
+- You intend to move to a SaaS model in your long-term plan but are taking a phased approach to cloud adoption
 
 
 ## Modernise
 
-Spread over 2 consecutive days, this workshop, part of a phased program, is aimed at ISVs that that are looking to deploy their application using a scalable, self-healing architecture on AWS. ISV's learn design patterns for optimizing applications using AWS managed services including auto scaling, load balancing, configuration management, NoSQL databases, containers and how to incorporate a CI/CD pipeline for deployment. The following AWS services are covered:
+Spread over 2 consecutive days, this workshop is part of a phased program aimed at ISVs that that are looking to deploy their application using a scalable, self-healing architecture on AWS. ISV's will learn design patterns for optimizing applications using AWS managed services including auto scaling, load balancing, configuration management, NoSQL databases, containers and how to incorporate a CI/CD pipeline for deployment. The following AWS services are covered:
 
 
-- ELB/ALB
-- EC2
-- Auto Scaling
-- S3 static website hosting
-- SQS
-- DynamoDB & Elasticache
-- ECS/Fargate and containers
-- Lambda
-- Code*
+- Elastic Load Balancer (ELB)
+- Amazon Elastic Compute Cloud (EC2)
+- AWS Auto Scaling
+- Amazon Simple Storage Service (S3)
+- Amazon CloudFront
+- Amazon DynamoDB
+- Amazon Aurora
+- Amazon Simple Queue Service (SQS)
+- Amazon ElastiCache
+- Amazon Elastic Container Service (ECS) with AWS Fargate and containers
+- AWS Lambda
+- AWS CodePipeline & AWS CodeCommit
+- AWS Cloud9
+- Amazon Rekognition
 
 The objective of this workshop is to enable the ISVs to use AWS services to deliver a solution that optimizes cost, accelerates deployment and better manages scale.
 
 
-The 2 day event will cover in-depth theory and hands on practical labs in which you’ll learn practical take a way’s that can be applied directly to your business and application.
+The 2 day event will cover in-depth theory and hands on practical labs in which you will learn practical content that can be applied directly to your business and application.
