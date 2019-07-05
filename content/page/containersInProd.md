@@ -6,29 +6,29 @@ weight = -95
 +++
 ### Recap
 
-Before the last lab we looked at why containers are useful and popular. Heres a quick reminder:
+Before the last lab we looked at why containers are useful and popular. Here is a quick reminder:
 
 - Portable
 - Lightweight
-- Standardized
+- Standardised
 - Easy to deploy
-- Along with containers, comes the “monolith to microservices” story:  containers and microservices go hand in hand.
+- Along with containers, comes the "monolith to microservices" story: containers and microservices go hand in hand.
 
-Its easy to see how moving your code round in this portable, repeatable package is powerful, even from testing on different development laptops.
-
+It is easy to see how moving your code round in this portable, repeatable package is powerful, even from testing on different development laptops.
+ 
 ### Running locally
 
-Running docker locally is one thing. You simply use the docker cli (command line interface). You can either build your container locally from code or download froma. docker repository. Personally when I use ECR as my repository I use the command:
+Running docker locally is one thing. You simply use the docker CLI (command line interface). You can either build your container locally from code or download from a docker repository. A simple approach is to use ECR as your repository with a command such as:
 
 ```bash
 $(aws ecr get-login --no-include-email --region us-east-1)
 ```
 
-As this executes the ```docker login``` command also and just smooths your work flow. You may want to set these up as aliases in your ```.bash_profile``` or equivilant.
+This executes the ```docker login``` command and smooths your work flow. You may want to set these up as aliases in your ```.bash_profile``` or equivilant.
 
 ### The challenge of scale
 
-When you come to run the containers in production you are faced with managing a fleet of servers as your resource pool. You could simply SSH into each host and place your work loads manually using the docker cli. However this isn't goign to scale as you gain more applications and more resources. Also consider how you manage efficient use of resources so you don't overload one server and underutilise others. This is where the orchestration engines come into their own.
+When you come to run the containers in production you are faced with managing a fleet of servers as your resource pool. You could simply SSH into each host and place your work loads manually using the docker CLI. However this is not going to scale as you develop more applications and deploy more resources. Also consider how you manage efficient use of resources so you do not overload one server and underutilise others. This is where the orchestration engines come into their own.
 
 ### Orchestration
 
@@ -36,7 +36,7 @@ Orchestration engines have eased the challenges of running docker at scale. They
 
 - Placing the docker container workload
   - This can also take into consideration contraints of placement (eg. do you need a GPU instance)
-  - Exclusion of serverices running on the same host
+  - Exclusion of services running on the same host
 - Best managing resources in a pool of servers
   - Make sure there is sufficent resources on a host to run a workload
   - Autoscale infrastructure underneath to add and rmeove capacity
@@ -47,33 +47,33 @@ There are maany orchestration systems in the wild and many are open source. Here
 
 ### ECS, EKS and Fargate
 
-#### ECS 
+#### Amazon Elastic Container Service (ECS)
 
-Amazon Elastic Container Service (Amazon ECS) is a highly scalable, high-performance container orchestration service that supports Docker containers and allows you to easily run and scale containerized applications on AWS. Amazon ECS eliminates the need for you to install and operate your own container orchestration software, AWS run and maintain the management control plain for you, meaning you only need to manage the worker nodes, this removes much of the heavy lifting of running an orchestration system.
+Amazon Elastic Container Service (Amazon ECS) is a highly scalable, high-performance container orchestration service that supports Docker containers and allows you to easily run and scale containerised applications on AWS. Amazon ECS eliminates the need for you to install and operate your own container orchestration software, AWS run and maintain the management control plane for you, meaning you only need to manage the worker nodes, this removes much of the heavy lifting of running an orchestration system.
 
-Do to its tight integration with AWS serverice you can with simple API calls launch and stop Docker-enabled applications, query the complete state of your application, and access many familiar features such as IAM roles, security groups, load balancers, Amazon CloudWatch Events, AWS CloudFormation templates, and AWS CloudTrail logs.
+Due to its tight integration with AWS services, you can with simple API calls launch and stop Docker-enabled applications, query the complete state of your application, and access many familiar features such as IAM roles, security groups, load balancers, Amazon CloudWatch Events, AWS CloudFormation templates, and AWS CloudTrail logs.
 
-#### EKS
+#### Amazon Elastic Kubernetes Service (EKS)
 
-Amazon Elastic Kubernetes Service (Amazon EKS) makes it easy to deploy, manage, and scale containerized applications using Kubernetes on AWS.
+Amazon Elastic Kubernetes Service (Amazon EKS) makes it easy to deploy, manage, and scale containerised applications using Kubernetes on AWS.
 
 Kubernetes is an Open Source platform that is hugely popular in the community and has many great features you may wish to use.
 
 Amazon EKS runs the Kubernetes management infrastructure for you across multiple AWS availability zones to eliminate a single point of failure. Amazon EKS is certified Kubernetes conformant so you can use existing tooling and plugins from partners and the Kubernetes community. Applications running on any standard Kubernetes environment are fully compatible and can be easily migrated to Amazon EKS.
 
-You can also run kubernetes on EC2 using tools like KOPS, however in this case you also have the responsibility of running the management control plain, so EKS may be a better option to help lessen the management overhead required to operate kubernetes at scale.
+You can also run kubernetes on EC2 using tools like KOPS, however in this case you also have the responsibility of running the management control plane, so EKS may be a better option to help remove the management overhead required to operate Kubernetes at scale.
 
-One thing to note is that EKS doesn't have native integrations with AWS services so you may need to add these features for IAM etc.
+One thing to note is that EKS provides a vanilla Kubernetes experience, so does not have native integrations with AWS services out of the box. You can add many native integration features using Kubernetes plugins. e.g. Support for IAM & AWS Application Load Balancer
 
 #### Fargate
 
 AWS Fargate is a compute engine for Amazon ECS that allows you to run containers without having to manage servers or clusters/worker nodes. With AWS Fargate, you no longer have to provision, configure, and scale clusters of virtual machines to run containers. This removes the need to choose server types, decide when to scale your clusters, or optimize cluster packing. AWS Fargate removes the need for you to interact with or think about servers or clusters. Fargate lets you focus on designing and building your applications instead of managing the infrastructure that runs them.
 
-Basically just give AWS your container and we'll run and scale it for you!
+Basically just give AWS your container and we will run and scale it for you!
 
-In the next lab we'll be using fargate to run your application so lets get some basic concepts defined.
+In the next lab we will be using Fargate to run your application, so we will cover some some basic concepts around these services next.
 
-### ECS/Fargate Contructs
+### ECS/Fargate Constructs
 
 #### How it works
 
@@ -81,7 +81,7 @@ In the next lab we'll be using fargate to run your application so lets get some 
 
 #### Running containers
 
-To run a container in ECS or in Fargate you can use two contructs, Tasks and Services, below we'll define what the role of each of these contructs are. ECS and Fargate use the same definition files and you can even run an ECS cluster that supports both EC2 instances and serverless containers in Fargate mode. This hybrid approach is useful in some situations where you need to have special conditions on the host machine. lets look at Task, Services and the placement stratergies.
+To run a container in ECS or in Fargate you can use two constructs, Tasks and Services, below we will define what the role of each of these constructs are. ECS and Fargate use the same definition files and you can even run an ECS cluster that supports both EC2 instances and serverless containers in Fargate mode. This hybrid approach is useful in some situations where you need to have special conditions on the host machine. Next lets look at Task, Services and the placement strategies.
 
 #### Tasks
 
@@ -183,9 +183,4 @@ __memberOf__
 
 ### Wrap up
 
-Using these constructs we can place and run container workloads in AWS easily and take advantage of other AWS service integration. Using Fargate we don't have to manage any infrastructure so our focus can yet again be on the application and the container it runs within.
-
-
-
-
-
+Using these constructs we can place and run container workloads in AWS easily and take advantage of other AWS service integration. Using Fargate we do not have to manage any infrastructure so our focus can yet again be on the application and the container it runs within.
