@@ -7,27 +7,27 @@ weight = -105
 
 #### What is CI?
 
-CI stands for "continious intergration", this is a practice where developers merge code back to the main branch (in version control) as often as possible. It's then the role of the CI platform to emphasis on testing automation to check that the application is not broken whenever new commits are integrated into the main branch.
+CI stands for "Continuous Integration", this is a practice where developers merge code back to the main branch (in version control) as often as possible. It is then the role of the CI platform to provide test automation to check that the application works and is not broken whenever new commits are integrated into the main branch.
 
 #### What is CD?
 
 Two things!
 
-##### Continious delivery
+##### Continuous Delivery
 
-In one case CD stands for Continuous delivery it's an extension of CI which if the automated testing of CI passes, the CD platform will ready the release of the software to be deployed to customers at the click of a button. This can be done either on a per commit basis or on a schedule (hourly/daily/weekly/etc...)
+In one case CD stands for Continuous Delivery it is an extension of CI which if the automated testing of CI passes, the CD platform will ready the release of the software to be deployed to customers at the click of a button. This can be done either on a per commit basis or on a schedule (hourly/daily/weekly/etc...)
 
 However, if you truly want to get the benefits of continuous delivery, you should deploy to production as early as possible to make sure that you release small batches that are easy to troubleshoot in case of a problem.
 
 ##### Continuous deployment
 
-In the other case CD stands for Continious deployment. This is a practice that goes one step further than Continious delivery and removes the human needed to click the button.
+In the other case, CD stands for Continuous Deployment. This is a practice that goes one step further than Continuous Delivery and removes the human needed to click the button.
 
-It relies on the tests you build into the pipeline to see if it should go ahead with the release. Moder systems also allow you to monitor you application for elevated error rates, which if detected can be used to roll back software to a previous state.
+It relies on the tests you build into the pipeline to see if it should go ahead with the release. Modern systems also allow you to monitor your application for elevated error rates, which if detected can be used to roll back software to a previous state.
 
 #### AWS CodePipeline
 
-In our workshop we are going to use AWS CodePipeline to automated in a continious deployment manner the infrastructure, and we'll continue to use this throughout the workshop.
+In our workshop we are going to use AWS CodePipeline to automate the infrastructure in a continuous deployment manner, and we will continue to use this throughout the workshop.
 
 #### What's AWS CodePipeline
 
@@ -47,7 +47,7 @@ Automating your build, test, and release process allows you to quickly and easil
 
 ##### Configurable workflow
 
-AWS CodePipeline allows you to model the different stages of your software release process using the console interface, the AWS CLI, AWS CloudFormation, or the AWS SDKs. You can easily specify the tests to run and customize the steps to deploy your application and its dependencies.
+AWS CodePipeline allows you to model the different stages of your software release process using the console interface, the AWS CLI, AWS CloudFormation, or the AWS SDKs. You can easily specify the tests to run and customise the steps to deploy your application and its dependencies.
 
 ##### Get started fast
 
