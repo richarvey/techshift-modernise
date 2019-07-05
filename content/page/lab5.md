@@ -7,9 +7,9 @@ weight = -98
 
 ### Objectives
 
-The objective of this lab is to move the session cache from an in-proc provider to a DynamoDB. This lab includes:
+The objective of this lab is to move the session cache to a DynamoDB. This lab includes:
 
-- Update CF Template to include the DynamoDB table
+- Update CloudFormation Template to include the DynamoDB table
 - Update the application code to use the new cache
 
 #### Reference Architecture
@@ -41,7 +41,7 @@ The objective of this lab is to move the session cache from an in-proc provider 
         Enabled: true
 ```
 
-3) In order for the webserver to access the new DynamoDB value, we need to give the servers role a new policy documnet. In the ServerRole, directly above the RoleName, add a new line and copy the new policy in.
+3) In order for the webserver to access the new DynamoDB value, we need to give the servers role a new policy document. In the ServerRole, directly above the RoleName, add a new line and copy the new policy in.
 
 ```
         -
@@ -167,4 +167,3 @@ This will delete all the resources that were created using the main CloudFormati
 ### Assets
 
 **[infra-lab5.yml](/assets/cloudformation/infra-lab5.yml)**
-

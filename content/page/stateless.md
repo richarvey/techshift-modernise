@@ -7,19 +7,19 @@ weight = -99
 
 ### Scaling your web application
 
-When you scale your web application you are faced with an option of how to store session state. Let's for example think about using loadbalancers to help you scale multiple backend servers. You can opt to confugure them to always send the traffic from one host to the same backend server by the use of cookies. This is called sticky sessions. However there is a danger that you unevenly load the visitors on your website on a small group of backend servers, this could cause a slow down and a poor user experience. The way to get around this is to allow traffic to hit any backend server and use an approach of offloading your sessions cache to a central place accessible via all the web application servers.
+When you scale your web application you are faced with an option of how to store session state. For example, think about using load balancers to help you scale multiple backend servers. You can opt to configure them to always send the traffic from one host to the same backend server by the use of cookies. This is called sticky sessions. However there is a danger that you unevenly load the visitors on your website to a small group of backend servers, this could cause a slow down and a poor user experience. The way to get around this is to allow traffic to hit any backend server and use an approach of offloading your sessions cache to a central place accessible via all the web application servers.
 
 ### The options
 
-There is a choice to be made when considering offloading your session cache. We could use an in-memory database like redis or memcache for storing our sessions. Amazon offer both of these as a managed service in Amazon Elasticache.
+There is a choice to be made when considering offloading your session cache. We could use an in-memory database like Redis or Memcached for storing our sessions. Amazon offer both of these as a managed service in Amazon ElastiCache.
 
-#### Amazon Elasticache
+#### Amazon ElastiCache
 
 Amazon ElastiCache offers fully managed Redis and Memcached. Seamlessly deploy, run, and scale popular open source compatible in-memory data stores. Build data-intensive apps or improve the performance of your existing apps by retrieving data from high throughput and low latency in-memory data stores. Amazon ElastiCache is a popular choice for Gaming, Ad-Tech, Financial Services, Healthcare, and IoT apps.
 
 These options are particularly good if you are running server side code such as PHP. You can simply update the php.ini file on the server to use this cache and that way you do not have to make code changes.
 
-#### Amazon Elasticache Engines
+#### Amazon ElastiCache Engines
 
 ![/img/stateless.png](/img/stateless.png)
 
@@ -39,13 +39,13 @@ Amazon ElastiCache can scale-out, scale-in, and scale-up to meet fluctuating app
 
 #### NoSQL DB as storage for session
 
-In our lab we are going to look at another way to achieve this. We can use Amazon DynamoDB to store session data. This is going to give us one real advantage over Elasticache. The DynamoDB pricing model is based on resource usage, that is to say its more elastic. Whereas Elasticache is built and scaled out and charged for the servers running underneath which may be underutilised.
+In our lab we are going to look at another way to achieve this. We can use Amazon DynamoDB to store session data. This is going to give us one real advantage over Elasticache. The DynamoDB pricing model is based on resource usage, that is to say its more elastic. Whereas ElastiCache is built, scaled out and charged for based on the servers running underneath which may be underutilised.
 
-There are many usecases of customers using this as a session cache because of the flexibility of the schemas you can use in DynamoDB. For example using the session data to store leaderscore boards ofr online gaming.
+There are many use-cases of customers using this as a session cache because of the flexibility of the schemas you can use in DynamoDB. For example using the session data to store leaderscore boards for online gaming.
 
 ##### Amazon DynamoDB
 
-Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. It's a fully managed, multiregion, multimaster database with built-in security, backup and restore, and in-memory caching for internet-scale applications. DynamoDB can handle more than 10 trillion requests per day and can support peaks of more than 20 million requests per second.
+Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. It's a fully managed, multi-region, multi-master database with built-in security, backup and restore, and in-memory caching for internet-scale applications. DynamoDB can handle more than 10 trillion requests per day and can support peaks of more than 20 million requests per second.
 
 Many of the world's fastest growing businesses such as Lyft, Airbnb, and Redfin as well as enterprises such as Samsung, Toyota, and Capital One depend on the scale and performance of DynamoDB to support their mission-critical workloads.
 
