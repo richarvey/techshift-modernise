@@ -1,10 +1,13 @@
+{{$currentNode := .}}
 <aside>
   <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
   <nav class="sidebar-nav" role="navigation">
     <ul>
       {{ $section := where $.Site.RegularPages "Section" "page"}}
       {{ range $section }}
-      <li><a href="{{ .Page.Permalink }}">{{ .Title | title }}</a></li>
+      <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}sidebar-nav-active {{ end }}">
+	      <a href="{{ .Page.Permalink }}">{{ .Title | title }}</a>
+      </li>
       {{ end }}
     </ul>
   </nav>
