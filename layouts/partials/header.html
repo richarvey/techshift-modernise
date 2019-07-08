@@ -7,4 +7,16 @@
     <h1 class="site-title"><a class="title-link" href="{{ .Site.BaseURL }}">{{ .Site.Params.home }}</a></h1>
     <p class="site-title" style="color:#FF9900;">{{ .Site.Params.subtitle }}</p>
   </div>
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      {{ if .Site.Params.disableInlineCopyToClipBoard }}
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      {{ end }}
+    </style>
+
+
 </header>

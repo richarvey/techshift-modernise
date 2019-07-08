@@ -28,3 +28,5 @@ theme = "docter"
   # main sections
   # change the main section to set the directory where the top articles are sourced
   mainSections = ["post"]
+
+  disableInlineCopyToClipBoard = false
