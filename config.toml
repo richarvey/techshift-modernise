@@ -18,7 +18,7 @@ theme = "docter"
   repo = "https://github.com/richarvey/techshift-modernise"
 
   # Add a reference to a logo, which will appear in the top right
-  logourl = "/img/techshift.png"
+  logourl = "img/techshift.png"
   logoalt = "AWS Techshift"
 
   # Mention your hosting provider 
