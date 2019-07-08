@@ -22,7 +22,7 @@ The objective of this lab is to take our existing server based API and build it 
 
 #### Setup an Elastic Cloud Repository (ECR)
 
-As with the CodeCommit repositories, we will be creating a single repository for storing the build docker images manually. In a production environment, it is common to use a single repository to store all the different builds, then push different builds to your different environments. That is, you may use CodePipeline to build a docker image from your release branch. Then this new image can be deoployed into a QA or pre-prod environment for testing. Once testing has been signed off, the same build is pushed into the production environment. The image is cusomised for each environment using environment variables.
+As with the CodeCommit repositories, we will be creating a single repository for storing the build docker images manually. In a production environment, it is common to use a single repository to store all the different builds, then push different builds to your different environments. You may use CodePipeline to build a docker image from your release branch. This new image can be deployed into a QA or a pre-prod environment for testing. Once testing has been signed off, the same build is pushed into the production environment. The image is customised for each environment using environment variables.
 
 1) Open the AWS console in your web browser.
 
@@ -63,7 +63,7 @@ In order to use a load balancer we need to setup a endpoint to act as a health c
   });
 ```
 
-This adds a handler that responsed to the /api/health endpoint and returns 200. In a production environment, this endpoint should do any checks that are needed to ensure the image is functioning correctly.
+This adds a handler that responds to the /api/health endpoint and returns 200. In a production environment, this endpoint should do any checks that are needed to ensure the image is functioning correctly.
 
 #### Add the docker build assets to the API
 
@@ -199,7 +199,7 @@ git push
       Value: "1"
 ```
 
-22) Next, we need the CodeBuild project that will do the actual build. The build project defines the environment the build will run in, along with the environment varialbes that will be set before starting the build. Add the following between the BuildNumber and the Outputs section.
+22) Next, we need the CodeBuild project that will do the actual build. The build project defines the environment the build will run in, along with the environment variables that will be set before starting the build. Add the following between the BuildNumber and the Outputs section.
 
 ```
   APIBuildProject:
@@ -320,7 +320,7 @@ git push
 
 38) Click Launch. Select the tsa-region key pair we are using for this lab. Tick the box to acknowledge that I have access to the selected private key and click Launch Instances.
 
-39) Click View Instances to view all your instances. The new instance will show an Instance State of Pending or Runing.
+39) Click View Instances to view all your instances. The new instance will show an Instance State of Pending or Running.
 
 40) SSH into your temporary server. You will need the certificate you created in lab 1.
 
@@ -373,7 +373,7 @@ $(aws ecr get-login --no-include-email --region **Region**)
 docker pull **Copied URI**
 ```
 
-This will download the latest build of the gallery docker image. As the config is setup to run alread, we can start the API using the following command. Note that the copied URI is followed by a :latest.
+This will download the latest build of the gallery docker image. As the config is setup to run already, we can start the API using the following command. Note that the copied URI is followed by a :latest.
 
 ```
 docker run -d -p 3000:3000 **Copied URI**:latest
@@ -391,7 +391,7 @@ The server will responsd with {"healthOk":true,"buildNum":0}. We can also test t
 curl http://localhost:3000/api/categories
 ```
 
-If the database has gone to sleep, you may recieve a timeout. This is due to the API code not being written to explicitly handle the way Aurora shuts down after inactivity. Run the same command a second time to get the result. You should get a line similar to:
+If the database has gone to sleep, you may receive a timeout. This is due to the API code not being written to explicitly handle the way Aurora shuts down after inactivity. Run the same command a second time to get the result. You should get a line similar to:
 
 ```json
 {"result":[{"id":1,"name":"Fiji","createStamp":"2019-05-06T05:43:47.000Z","updateStamp":"2019-05-06T05:43:47.000Z","createdBy":{"id":1,"name":"Admin"}}]}
@@ -415,7 +415,7 @@ In this lab we have taken our existing server based API and packaged it into a d
 
 Using Docker micro-services. How granular should the micro-service containers be?
 
-### Cleanup
+### Clean-up
 
 To remove the resources you have created thus far:
 
@@ -440,7 +440,7 @@ This will delete all the resources that were created using the main CloudFormati
  - Select the RDS service.
  - Select Snapshots from the left hand menu.
  - Check the tickbox next to each snapshot you wish to delete, and click Actions then Delete Snapshot.
- - When prompted, click Delete to delete the snpashots.
+ - When prompted, click Delete to delete the snapshots.
 
 ### Assets
 

@@ -26,7 +26,7 @@ The objective of this lab is to get your account setup ready for the TechShift A
 - US East (Ohio)
 - US West (Oregon)
 
-Why only these regions? Not all services are available in all regions. During these labs, we will make use of the Cloud9 service to update our application code. Cloud9 is only available in the regions listed above. You can see what services are available in what regions by visiting: [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
+Why only these regions? Not all services are available in all regions. During these labs, we will make use of the Cloud9 service to update our application code. Cloud9 is only available in the regions listed above. You can see what services are available in each region by visiting: [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
 
 If you cannot select a region, you must first select a service that is not Global. For example, selecting the EC2 service will enable region selection.
 
@@ -38,15 +38,15 @@ If you cannot select a region, you must first select a service that is not Globa
 
 4) Click Create Key Pair.
 
-5) Give your new kay a name such as tsa-[region] and clieck Create.
+5) Give your new key a name such as tsa-[region] and click Create.
 
-6) Your borwser will download a file called tsa-[region].pem. You will need this file in later labs to connect to your server.
+6) Your browser will download a file called tsa-[region].pem. You will need this file in later labs to connect to your server.
 
 #### Setup the base infrastructure
 
 7) Copy the infra.yaml from the Assets section below and save as infra.yaml on your local computer.
 
-8) Select the CloudFormation service.
+8) Select the AWS CloudFormation service.
 
 9) Select Create stack.
 
@@ -58,7 +58,7 @@ If you cannot select a region, you must first select a service that is not Globa
 
 13) Leave all options blank and click Next at the bottom of the page.
 
-14) Check the tickbox labeled I acknowledge that AWS CloudFormation might create IAM resources with custom names. and click Create stack.
+14) Check the tickbox labeled I acknowledge that AWS CloudFormation might create IAM resources with custom names and click Create stack.
 
 15) Wait until the Stack status shows as Complete.
 

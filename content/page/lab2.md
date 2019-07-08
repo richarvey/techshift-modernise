@@ -6,9 +6,9 @@ weight = -105
 +++
 ### Objectives
 
-The objective of this lab is build a solid base we can use to modernise your application. This lab includes:
+The objective of this lab is to build a solid base we can use to modernise your application. This lab includes:
 
-- Updating our CloudFormation template to include the additional Availability Zones and add private Subnets to host our private resources.
+- Updating our CloudFormation template to include additional Availability Zones and add Private Subnets to host our private resources.
 - Using S3 as a versioned repository for our CloudFormation templates.
 - Using CodePipeline to deploy our updated CloudFormation template into our VPC.
 
@@ -118,7 +118,7 @@ The objective of this lab is build a solid base we can use to modernise your app
           Value: !Join ['', [!Ref 'AWS::StackName', '::PrivateSecurityGroup'] ]
 ```
 
-7) Save your changes. You can use https://text-compare.com/ to compare your version with the updated version of the CloudFormation template at the bottom of this document.
+7) Save your changes. You can use https://text-compare.com/ (or diff!) to compare your version with the updated version of the CloudFormation template at the bottom of this document.
 
 #### Deploy the CloudFormation changes using CodePipeline
 
@@ -128,7 +128,7 @@ In order to deploy the CloudFormation changes for our TSAGallery we will be usin
 
 8) Create a new blank document in your favourite text editor. Add each of the following sections to the end of the document.
 
-__Note:__ Indentation is important in CloudFormation and the code snipits must be copied exactly as they appear, including leading spaces.
+__Note:__ Indentation is important in CloudFormation and the code snippets must be copied exactly as they appear, including leading spaces.
 
 9) Add the CloudFormation version line.
 
@@ -139,7 +139,7 @@ AWSTemplateFormatVersion: 2010-09-09
 10) Add the parameters that will control the creation of the resources:
 
 - KeyName and SSHLocation will be used as a parameter for the main template we edited above.
-- ChildStackName is the name of the stack used to initalise your account. This will be TSAGallery unless you changed it in Lab0.
+- ChildStackName is the name of the stack used to initialise your account. This will be TSAGallery unless you changed it in Lab 1.
 - DataBucketName is the location we will be storing the resources for the main stack including the CloudFormation template.
 
 ```
@@ -251,7 +251,7 @@ Resources:
                 - Name: SourceArtifact
 ```
 
-15) Add a stage to deploy the SourceArtifact using CloudFormation. a SourceArtifact is the name given to the source template inside CodePipeline.
+15) Add a stage to deploy the SourceArtifact using CloudFormation. A SourceArtifact is the name given to the source template inside CodePipeline.
 
 ```
         -
@@ -327,7 +327,7 @@ __Note:__ Why do we export the bucket name, but use parameters for the KeyName a
 
 28) On the Configure stack options page, scroll to the bottom and click Next.
 
-29) On the Review TSA-Bootstrap page, scroll to the bottom. Click the I acknowledge that AWS CloudFormation might create IAM resources. options and click Create stack.
+29) On the Review TSA-Bootstrap page, scroll to the bottom. Click the I acknowledge that AWS CloudFormation might create IAM resources option and click Create stack.
 
 #### Deploy the new infra.yaml
 
@@ -357,10 +357,10 @@ In this lab you not only used CloudFormation to setup the landing zone you will 
 
 ### Talking points
 
-- We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints.
-- Two availablity zones provides high availability, how can we use more availability zones to provide fault tollerance.
+- We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints, what are the advantages of this?
+- Two availability zones provides high availability, how can we use more availability zones to provide fault tolerance?
 
-### Cleanup
+### Clean-up
 
 To remove the resources you have created thus far:
 

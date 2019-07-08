@@ -68,7 +68,7 @@ Fargate needs permission to execute and to access various resources
       RetentionInDays: 14
 ```
 
-5) The Application Load Balancer needs to be able to route traffic through to our Fargate nodes, so we need to add another Securtiy Group. Add the following between the new APILogGroup and the Outputs section.
+5) The Application Load Balancer needs to be able to route traffic through to our Fargate nodes, so we need to add another Security Group. Add the following between the new APILogGroup and the Outputs section.
 
 ```
   FargateSecurityGroup:
@@ -96,7 +96,7 @@ Fargate needs permission to execute and to access various resources
 
 Fargate uses task definitions to define all the attributes used when running Docker images in Fargate. Firstly we define the task and then use a service to tell Fargate to run the task definition on the Cluster.
 
-7) Add the follwoing task definition between the FargateSecurityGroup and the Outputs section. You will need to update the task definition to reference your ECR repository. Update the Image: IMAGENAME by replacing IMAGENAME with the ECR URL you copied in the last lab.
+7) Add the following task definition between the FargateSecurityGroup and the Outputs section. You will need to update the task definition to reference your ECR repository. Update the Image: IMAGENAME by replacing IMAGENAME with the ECR URL you copied in the last lab.
 
 __Ensure you have changed the IMAGENAME__. If you do not, your stack will not be able to start and may block for up to 1 hour.
 
@@ -159,9 +159,9 @@ __Ensure you have changed the IMAGENAME__. If you do not, your stack will not be
       TaskDefinition: !Ref APITask
 ```
 
-#### Using an ALB - Application Load Balancer
+#### Using an Application Load Balancer (ALB)
 
-The Application Load Balancer (ALB) is used to recieve incoming requests and route them to a copy of the running Docker image in Fargate. To use a ALB we need to define three components. The actual ALB instance, a listener and a target group. The ALB hosts both the listener and target group. The listener defines what port to listen on, in our case HTTP on port 80. It then sends the traffic to the target group.
+The Application Load Balancer (ALB) is used to receive incoming requests and route them to a copy of the running Docker image in Fargate. To use a ALB we need to define three components. The actual ALB instance, a listener and a target group. The ALB hosts both the listener and target group. The listener defines what port to listen on, in our case HTTP on port 80. It then sends the traffic to the target group.
 
 9) To add a load balancer add the following between the APIService and the Outputs section.
 
@@ -233,7 +233,7 @@ and change it to read:
             TargetOriginId: Fargate-Endpoint
 ```
 
-13) Next we will add a new Origin. Add the following block directly below the Origins: line in the the CFDistribution.
+13) Next we will add a new Origin. Add the following block directly below the Origins: line in the CFDistribution.
 
 ```
           -
@@ -246,7 +246,7 @@ and change it to read:
             Id: Fargate-Endpoint
 ```
 
-14) As we don't need the server origin, remove the following block from the Origins: section in the the CFDistribution.
+14) As we don't need the server origin, remove the following block from the Origins: section in the CFDistribution.
 
 ```
           -
@@ -342,7 +342,7 @@ and change it to read:
       - aws cloudfront wait invalidation-completed --distribution-id $DISTRIBUTIONID --id $INVALIDATIONID
 ``` 
 
-These additional lines use the command line tools to update the Fargate containers with the newer version of the docker image, then kicks off a CloudFront invalidation. The invalidation causes CloudFront to discard any cached versions. In a production system, doing a blanket invalidation is not recomended. Rather, versioned URIs should be used wherever possible.
+These additional lines use the command line tools to update the Fargate containers with the newer version of the docker image, then kicks off a CloudFront invalidation. The invalidation causes CloudFront to discard any cached versions. In a production system, doing a blanket invalidation is not recommended. Rather, versioned URIs should be used wherever possible.
 
 23) Save the changes and in the bash panel at the bottom of the screen, commit the changes to CodeCommit.
 
@@ -356,7 +356,7 @@ git push
 
 In this lab we have taken the Docker image we built in the previous lab and deployed it using serverless Fargate. We updated the CloudFront distribution to use this new deployment and we terminated our initial server as we don't need it anymore.
 
-### Cleanup
+### Clean-up
 
 To remove the resources you have created thus far:
 

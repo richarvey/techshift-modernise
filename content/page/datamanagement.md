@@ -6,12 +6,12 @@ weight = -101
 +++
 #### Getting data into AWS
 
-Getting data into AWS and into RDS is simple. There is a tool just for this purpose called the Database Migration Service (DMS). DMS allows you move data from on-prem systems easily, securely and reliably. It supportss a host of features:
+Getting data into AWS and into RDS is simple. There is a tool just for this purpose called the AWS Database Migration Service (DMS). DMS allows you move data from on-prem systems easily, securely and reliably. It supports a host of features:
 
-- Simple migration (eg. MySQL to RDS/Aurora MySQL)
-- Schema Conversion (eg. Oracle to Postgres Aurora)
-- DB Consolidation (multiple db's inot one)
-- Continious Replication
+- Simple migration (e.g. MySQL to RDS/Aurora MySQL)
+- Schema Conversion (e.g. Oracle to PostgreSQL Aurora)
+- DB Consolidation (multiple DB's into one)
+- Change Data Capture (CDC) - Continuous Replication
 
 ##### Homogeneous Database Migrations
 
@@ -21,19 +21,19 @@ Getting data into AWS and into RDS is simple. There is a tool just for this purp
 
 ![/img/dms-2.png](/img/dms-2.png)
 
-#### Running your DB in the CLoud (RDS / Aurora and Aurora Serverless)
+#### Running your DB in the Cloud (RDS / Aurora and Aurora Serverless)
 
 It is possible to run your database on EC2, however if you do this you need to address several challenges:
 
-- how do you scale
- - multimaster and failover
- - read capacity
-- patch management
-- backup
+- How do you scale?
+ - Multi-master and failover
+ - Read capacity
+- Patch management
+- Backup
 
-All these factors add challenges to your daily operational running and removes your focus from innovating in your application.
+All these factors add challenges to your daily operational routine and removes your focus from innovating in your application.
 
-This is where RDS, Aurora and Aurora serverless comes in. These are fully managed services that allow you to deploy databases at the click of a button. All the above challenges are inbuilt feature in the service so you can get back to focusing on your application rather than building and managing your own solution. 
+This is where RDS, Aurora and Aurora Serverless comes in. These are fully managed services that allow you to deploy databases at the click of a button. All the above challenges are in-built features in the services so you can get back to focusing on your application rather than building and managing your own solution. 
 
 #### RDS
 
@@ -72,13 +72,14 @@ Amazon Aurora provides multiple levels of security for your database. These incl
 ##### MySQL and PostgreSQL Compatible
 
 The Amazon Aurora database engine is fully compatible with existing MySQL and PostgreSQL open source databases, and adds compatibility for new releases regularly. This means you can easily migrate MySQL or PostgreSQL databases to Aurora using standard MySQL or PostgreSQL import/export tools or snapshots. It also means the code, applications, drivers, and tools you already use with your existing databases can be used with Amazon Aurora with little or no change. 
+
 ##### Fully Managed
 
 Amazon Aurora is fully managed by Amazon Relational Database Service (RDS). You no longer need to worry about database management tasks such as hardware provisioning, software patching, setup, configuration, or backups. Aurora automatically and continuously monitors and backs up your database to Amazon S3, enabling granular point-in-time recovery. You can monitor database performance using Amazon CloudWatch, Enhanced Monitoring, or Performance Insights, an easy-to-use tool that helps you quickly detect performance problems. 
 
 ##### Migration Support
 
-MySQL and PostgreSQL compatibility make Amazon Aurora a compelling target for database migrations to the cloud. If you're migrating from MySQL or PostgreSQL, see our migration documentation for a list of tools and options. To migrate from commercial database engines, you can use the AWS Database Migration Service for a secure migration with minimal downtime.
+MySQL and PostgreSQL compatibility make Amazon Aurora a compelling target for database migrations to the cloud. If you are migrating from MySQL or PostgreSQL, see our migration documentation for a list of tools and options. To migrate from commercial database engines, you can use the AWS Database Migration Service for a secure migration with minimal downtime.
 
 #### Aurora Serverless
 
@@ -100,6 +101,6 @@ Seamlessly scale compute and memory capacity as needed, with no disruption to cl
 
 Pay only for the database resources you consume, on a per-second basis. You don't pay for the database instance unless it's actually running.
 
-##### Highly Avaliable
+##### Highly Available
 
 Built on distributed, fault-tolerant, self-healing Aurora storage with 6-way replication to protect against data loss.

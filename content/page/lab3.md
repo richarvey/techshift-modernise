@@ -7,13 +7,13 @@ weight = -102
 
 ### Objectives
 
-The objective of this lab is move the static portions of the solution from the application to an S3 bucket served using CloudFront. This lab includes:
+The objective of this lab is move the static portions of the solution from the application to a S3 bucket served using Amazon CloudFront. This lab includes:
 
 - Setup a CodeCommit repository for the SPA and copy the SPA code.
 - Updating our CloudFormation template to include a CodePipeline, S3 bucket and CloudFront distribution.
-- Run the CodePipeline to deply the SPA into the S3 bucket.
+- Run the CodePipeline to deploy the SPA into the S3 bucket.
 - Copy our image assets to our asset S3 bucket.
-- Update our application to store phsical assets such as thumbnails and images in the S3 bucket.
+- Update our application to store static assets such as thumbnails and images in the S3 bucket.
 
 #### Reference Architecture
 
@@ -25,11 +25,11 @@ The objective of this lab is move the static portions of the solution from the a
 
 #### Setup CodeCommit
 
-__Note:__ While we have been using CloudFormation to setup the resouces we are using, for the code repositories we will be manually setting them up. In a development environment, you don't want your code repositories to be tied to the infrastructure. By creating these independently to the infrastructure, we can replicate the infrastructure using CloudFormation, while referencing the seperate code repositories.
+__Note:__ While we have been using CloudFormation to setup the resources we are using, for the code repositories we will be manually setting them up. In a development environment, you do not want your code repositories to be tied to the infrastructure. By creating these independently to the infrastructure, we can replicate the infrastructure using CloudFormation, while referencing the separate code repositories.
 
 2) Select the CodeCommit service and click Create repository.
 
-3) Enter TSAGallery-SPA as the Repository name and click Create. SPA stands for Single Page Applicaition. Generally an SPA is simply a web site where the site is delivered via a single HTML page that "talks" to an API for it's data. This includes sites built using Angular and React.
+3) Enter TSAGallery-SPA as the Repository name and click Create. SPA stands for Single Page Application. Generally an SPA is simply a web site where the site is delivered via a single HTML page that "talks" to an API for the data. This includes sites built using Angular and React frameworks.
 
 4) Click Repositories from the left hand menu, then click Create repository again.
 
@@ -54,9 +54,9 @@ __Note:__ While we have been using CloudFormation to setup the resouces we are u
 
 12) Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-SPA repository.
 
-13) Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this Url as the SPA Git Url.
+13) Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this URL as the SPA Git URL.
 
-14) Back in the SSH terminal window, enter the following commands. After the git clone command paste the the copied SPA Git Url. When prompted, enter the username and password from step 10.
+14) Back in the SSH terminal window, enter the following commands. After the git clone command paste the copied SPA Git URL. When prompted, enter the username and password from step 10.
 
 ```
 git config --global credential.helper store
@@ -94,7 +94,7 @@ git push
 
 If prompted, enter the username and password from step 10.
 
-19) You can now confirm that the code has been committed by selecting the CodeCommit service and clicking on the TSAGallery-SPA repository. The repoistory should contain two folers and two files.
+19) You can now confirm that the code has been committed by selecting the CodeCommit service and clicking on the TSAGallery-SPA repository. The repository should contain two folders and two files.
 
 #### Copy image assets to S3
 
@@ -109,11 +109,11 @@ aws s3 cp ./Uploads s3://**BucketName**/images/uploads --recursive
 
 21) You can now confirm that the images have been uploaded to S3 by selecting the S3 service and clicking on the data bucket name to open the bucket. Then click on the images folder then the uploads folder. The folder should contain six files.
 
-22) ow we need to update the application code to use S3 based images.
+22) Now we need to update the application code to use S3 based images.
 
 #### Upload the API to the CodeCommit Repository
 
-23) Firstly, we need to delete the the public information as we will be serving it from S3. As the application is "owned" by the root user, we need to run the following commands as the root user. Run the following commands to get to the site as root.
+23) Firstly, we need to delete the public information as we will be serving it from S3. As the application is "owned" by the root user, we need to run the following commands as the root user. Run the following commands to get to the site as root.
 
 ```
 sudo su -
@@ -135,12 +135,12 @@ git add .gitignore
 git commit -m "Initial Commit"
 ```
 
-26) We need to connect our local Git repository with our CodeCommit repository. In the borwser, select the CodeCommit service and click on the TSAGallery-API repository. Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this Url as the API Git Url.
+26) We need to connect our local Git repository with our CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-API repository. Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this URL as the API Git URL.
 
 27) Back in the SSH terminal window, run the following command. You will need to paste the copied Clone URL at the end.
 
 ```
-git remote add origin **API Git Url**
+git remote add origin **API Git URL**
 ```
 
 28) Push the code to our CodeCommit repository.
@@ -278,7 +278,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 50) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
+51) Again we need an S3 bucket for CodePipeline to store artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want keep the infrastructure and bootstrap artifacts separate. Add a new S3 bucket between PipelineRole and the Output section.
 
 ```
   PipelineArtifacts:
@@ -335,7 +335,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 #### Serving using CloudFront
 
-53) Lastly, we need to setup a CloudFront distribution to serve the static assets and route the API requests to the existing server. We need an access identity to allow CloudFront to read our S3 files. Add a new access identity between the PipeLine and the Output section.
+53) Lastly, we need to setup a CloudFront distribution to serve the static assets and route the API requests to the existing server. We need an access identity to allow CloudFront to read our S3 files. Add a new access identity between the Pipeline and the Output section.
 
 ```
   CFOriginAccessIdentity:
@@ -363,7 +363,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
               CanonicalUser: !GetAtt CFOriginAccessIdentity.S3CanonicalUserId
 ```
 
-55) Add the CloudFront distribution between thye DataBucketAccessPolicy and the Output section. The CloudFront distribution consists of cache behaviours and origins. The cache behaviors map to the incomming request by the PathPattern. If there is no explicit mapping, the DefaultCacheBehavior is selected. Once a behavior is found, CloudFront routes the request to an origin based on the TargetOriginId. In our case, the origins map to either our S3 bucket or the API server.
+55) Add the CloudFront distribution between the DataBucketAccessPolicy and the Output section. The CloudFront distribution consists of cache behaviours and origins. The cache behaviors map to the incoming request by the PathPattern. If there is no explicit mapping, the DefaultCacheBehavior is selected. Once a behavior is found, CloudFront routes the request to an origin based on the TargetOriginId. In our case, the origins map to either our S3 bucket or the API server.
 
 ```
   CFDistribution:
@@ -463,14 +463,14 @@ In this lab you achieved a lot. You have taken a big step towards modernising yo
 - Updating our CloudFormation template to include a CodePipeline, S3 bucket and CloudFront distribution.
 - Run the CodePipeline to deply the SPA into the S3 bucket.
 - Copy our image assets to our asset S3 bucket.
-- Update our application to store phsical assets such as thumbnails and images in the S3 bucket.
+- Update our application to store static assets such as thumbnails and images in the S3 bucket.
 
 ### Talking points
 
-- Using WAF to provide additional security on the CloudFront distribution.
-- Using time-to-live values in CloudFront and why the API has 0 for the time-to-live.
+- How could you use AWS WAF to provide additional security on the CloudFront distribution? What protection does it provide?
+- How do you use time-to-live values in CloudFront and why does the API use a value of 0 for time-to-live?
 
-### Cleanup
+### Clean-up
 
 To remove the resources you have created thus far:
 
