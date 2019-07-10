@@ -18,7 +18,7 @@ The labs are hands on sessions in which you will put the theory to use in practi
 
 #### Layout of documents
 
-The site is designed to hightlight code blocks in a simple way. They are shown as below:
+The site is designed to hightlight code blocks in a simple way and allow you to easily copy them to your clipboard. They are shown as below:
 
 ```
 This is a code block
@@ -35,12 +35,12 @@ Lists are defined as:
 
 ### First deployment
 
-In this workshop we are going to iteratively build a photo gallery solution. We will start out with a simple application built on EC2 as a monolith and then break it down into a more cloud ready application that can be deployed easily. The initial architecture is pretty simple:
+In this workshop we are going to iteratively build a photo gallery solution. We will start out with a simple application built on EC2 as a monolith and then break it down into a more cloud ready application that can be easily deployed. The initial architecture is pretty simple:
 
 ![/img/arch/arch1.png](/img/arch/arch1.png)
 
 ### Target Architecture
 
-Over the course of the labs and over the two days we will split out the application components, such as the database, static assets and key functions. We will then use a modern cloud approach to solving these solutions by integrating services such as Amazon Aurora, Amazon S3 + Amazon CloudFront and AWS Lambda. This will all be built using tools for source control, AWS CodeCommit and a Code Pipeline using AWS CodePipeline to build a CI/CD solution. The final architecture towards a microservices architecture and modern cloud deployment.
+Over the course the next two days each lab will split out the application components, such as the database, static assets and key functions. We will then use a modern cloud approach to break down the monolithic application into different services by integrating services such as Amazon Aurora, Amazon S3, Amazon CloudFront and AWS Lambda. This will be built using source control in AWS CodeCommit and a Pipline implemented in AWS CodePipeline to build a CI/CD solution. The conclusion is a modern cloud based microservices deployment.
 
 ![/img/arch/arch8.png](/img/arch/arch8.png)
