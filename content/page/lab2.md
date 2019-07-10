@@ -338,19 +338,21 @@ We want to be able to use the same CloudFormation templates for both production 
 
 #### Deploy the new infra.yml
 
-30) Using your local computer, create a zip file containing the updated infra.yml.
+30) Using your local computer, create a zip file containing the updated infra.yml and call it 'infra.yml.zip' (you may need to rename this from infra-lab2.yml).
 
 31) Select the S3 service.
 
-32) Select the bucket with the name from the DataBucketName in step 24.
+32) Select the bucket with the name from the 'DataBucketName' earlier.
 
-33) Click Create Folder. Enter the folder name cloudformation and click Save. Note: The folder name must be all lowercase
+33) Click Create Folder. Enter the folder name 'cloudformation' and click 'Save'.
 
-34) Click on the new cloudformation folder to open it.
+__Note__: The folder name must be all lowercase
 
-35) Click Upload and drop the Infra.yml.zip file from step 30 onto the upload screen. Click Upload.
+34) Click on the new 'cloudformation' folder to open it.
 
-36) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+35) Click Upload and drop the 'infra.yml.zip' file onto the upload screen. Click 'Upload'.
+
+36) Select the CodePipeline service and select the 'TSABootstrap-Pipeline' to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show as 'Succeeded'.
 
 #### Confirm the changes
 
@@ -360,7 +362,7 @@ You should now be able to see PublicSubnetB, PrivateSubnetA and PrivateSubnetB, 
 
 ### Wrap-up
 
-In this lab you not only used CloudFormation to setup the landing zone you will use for the remainder of the labs, you also used CodePipeline to automate the deployment of these changes. We will continue to use this Pipeline as we add more services and resources to your account.
+In this lab you used CloudFormation to setup a VPC structure or landing zone you will use for the remainder of the labs, you also used CodePipeline to automate the deployment of these changes. We will continue to use this Pipeline as we add more services and resources to your account.
 
 ### Talking points
 
@@ -371,19 +373,19 @@ In this lab you not only used CloudFormation to setup the landing zone you will 
 
 To remove the resources you have created thus far:
 
-1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts bucket. This will named like tsa-bootstrap-pipelineartifacts-?????. You can empty a bucket using the Empty button after selecting the bucket in S3.
+1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts bucket. This will be named something like tsabootstrap-pipelineartifacts-?????. You can empty the bucket using the 'Empty' button after selecting the bucket in S3.
 
 2) Select the CloudFormation service.
 
 3) Select the TSAGallery stack by clicking the selection circle. The row will highlight blue.
 
-4) Using the Actions menu, select Delete stack.
+4) Using the Actions menu, select 'Delete stack'.
 
-5) When prompted, click Delete.
+5) When prompted, click 'Delete'.
 
 This will delete all the resources that were created using the main CloudFormation template.
 
-6) Use the same Delete stack method used on the TSAGallery stack to delete the TSA-Bootstrap stack.
+6) Use the same Delete stack method used on the TSAGallery stack to delete the TSABootstrap stack.
 
 #### Assets
 
