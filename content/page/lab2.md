@@ -392,3 +392,4 @@ This will delete all the resources that were created using the main CloudFormati
 **[infra-lab2.yml](/assets/cloudformation/infra-lab2.yml)**
 
 **[bootstrap.yml](/assets/cloudformation/infra-lab2.yml)**
+

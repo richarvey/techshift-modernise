@@ -22,7 +22,7 @@ The objective of this lab is to take our existing server based API and build it 
 
 #### Setup an Elastic Cloud Repository (ECR)
 
-As with the CodeCommit repositories, we will be creating a single repository for storing the build docker images manually. In a production environment, it is common to use a single repository to store all the different builds, then push different builds to your different environments. You may use CodePipeline to build a docker image from your release branch. This new image can be deployed into a QA or a pre-prod environment for testing. Once testing has been signed off, the same build is pushed into the production environment. The image is customised for each environment using environment variables.
+As with the CodeCommit repositories, we will be creating a single repository for storing the built docker images manually. In a production environment, it is common to use a single repository to store all the different builds, then push different builds to your different environments. You may use CodePipeline to build a docker image from your release branch. This new image can be deployed into a QA or a pre-prod environment for testing. Once testing has been signed off, the same build is pushed into the production environment. The image is customised for each environment using environment variables.
 
 1) Open the AWS console in your web browser.
 
@@ -36,7 +36,7 @@ As with the CodeCommit repositories, we will be creating a single repository for
 
 #### Setup a health check
 
-In order to use a load balancer we need to setup a endpoint to act as a health check. The health check must return a success state (http status code 200) when the API is ready to accept connections. The load balancer will make requests to the health check after the image is started and at regular intervals to ensure the image is able to accept traffic.
+In order to use a load balancer we need to setup an endpoint to act as a health check. The health check must return a success state (http status code 200) when the API is ready to accept connections. The load balancer will make requests to the health check after the image is started and at regular intervals to ensure the image is able to accept traffic.
 
 6) Select the Cloud9 service and click Open IDE to re-open the editor.
 
@@ -240,7 +240,7 @@ git push
       ServiceRole : !Ref PipelineRole  
 ```
 
-23) Lastly, we need a CodePipeline. The CodePipeline consists of two stages. The first stage gets the latest source code from our CodeCommit repository while the second stage kicks of the CodeBuild project with the latest source. Add the following between the APIBuildProject and the Outputs section.
+23) Lastly, we need a CodePipeline. The CodePipeline consists of two stages. The first stage gets the latest source code from our CodeCommit repository while the second stage kicks off the CodeBuild project with the latest source. Add the following between the APIBuildProject and the Outputs section.
 
 ```
   APIPipeline:
@@ -294,7 +294,7 @@ git push
 
 26) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 24 onto the upload screen. Click Upload.
 
-27) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+27) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
 28) We can confirm the pipeline ran all the way through by checking in ECR for a new image. Select the ECR service and then click on the tsa/gallery repository. There should now be one image listed. The image tag will be latest, 1. This means the image has two tags, the latest tag and the 1 tag. As we do more builds, the latest tag will be moved to the newer builds. The 1 tag will stay with this build. Every build will get a new number. This allows us to reference both the latest build, but also any build by build number.
 
@@ -316,7 +316,7 @@ git push
 
 36) Click Next: Configure Security Group.
 
-37) Select Select an existing security group and select the TSAGallery-PublicSecurityGroup-xxx security group. Then click Review and Launch.
+37) Select "Select existing security group" and select the TSAGallery-PublicSecurityGroup-xxx security group. Then click Review and Launch.
 
 38) Click Launch. Select the tsa-region key pair we are using for this lab. Tick the box to acknowledge that I have access to the selected private key and click Launch Instances.
 
@@ -355,7 +355,7 @@ docker info
 
 45) Select the EC2 service and click Running Instances to view the instances.
 
-46) Tick the box next on the TempServer line, then click Actions and mouse over Instance Settings. Click Attach/Replace IAM Role.
+46) Tick the box next to the TempServer line, then click Actions and mouse over Instance Settings. Click Attach/Replace IAM Role.
 
 47) From the drop down shown, select the TempServerRole and click Apply. This will allow the server to act as the attached role without needing to add any credentials to the running server. Click Close.
 
@@ -385,7 +385,7 @@ docker run -d -p 3000:3000 **Copied URI**:latest
 curl http://localhost:3000/api/health
 ```
 
-The server will responsd with {"healthOk":true,"buildNum":0}. We can also test the database is connecting properly by requesting the list of categories. Enter the following command.
+The server will respond with {"healthOk":true,"buildNum":0}. We can also test the database is connecting properly by requesting the list of categories. Enter the following command.
 
 ```
 curl http://localhost:3000/api/categories
