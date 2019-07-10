@@ -22,7 +22,7 @@ The objective of this lab is to move the session cache to a DynamoDB. This lab i
 
 1) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-2) We need to define our DynamoDb properties. In this case we are using PAY_PER_REQUEST which allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDb to automatically delete any records have expired. It does this by comparing the time stored in the attributed defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
+2) We need to define our DynamoDb properties. In this case we are using PAY_PER_REQUEST which allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDb to automatically delete any records have expired. It does this by comparing the time stored in the attribute defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
 
 ```
   DynamoDBCache:

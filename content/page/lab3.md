@@ -48,9 +48,8 @@ __Note:__ While we have been using CloudFormation to setup the resources we are 
 #### Updating the SPA code repository
 
 11) SSH into your web server. You will need the certificate you created in lab 1.
-
-- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
-- Click Connect to get the connection instructions.
+ - Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
+ - Click on Actions dropdown at the top -> Connect to get the connection instructions.
 
 12) Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-SPA repository.
 
@@ -194,7 +193,7 @@ npm update
 npm install aws-sdk --save
 ```
 
-39) We need to update our application to support S3 based files. Using the tree view on the right, expand the TSAGallery-API folder, then the utils folder.
+39) We need to update our application to support S3 based files. Using the tree view on the left, expand the TSAGallery-API folder, then the utils folder.
 
 40) Double click on the config.js file to open it in an editor. You will need to add the following code block into the config. Firstly add a new line on 3, then paste the code block into the new blank line. Then update the two values to match your region and DataBucketName. Save the changes by clicking File and Save.
 
@@ -230,7 +229,7 @@ git push
 
 44) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 - Click Connect to get the connection instructions.
 
 45) If the prompt starts with ec2-user@, enter the command as follows to resume as root. The prompt will change to root@.
@@ -278,7 +277,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 50) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-51) Again we need an S3 bucket for CodePipeline to store artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want keep the infrastructure and bootstrap artifacts separate. Add a new S3 bucket between PipelineRole and the Output section.
+51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
 
 ```
   PipelineArtifacts:
@@ -449,7 +448,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 59) Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 57 onto the upload screen. Click Upload.
 
-60) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start. The CloudFront distribution may take up to 10-15 minutes to start. This is due to the time it takes to propagate the new distribution to all the CloudFront Points of Presence. Once the update is finished, both Source and Deploy will show Succeeded.
+60) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start. The CloudFront distribution may take up to 10-15 minutes to start. This is due to the time it takes to propagate the new distribution to all the CloudFront Points of Presence. Once the update is finished, both Source and Deploy will show Succeeded.
 
 61) Using the Outputs tab, retrieve the DistributionUrl. Open this URL in your web browser to view the site as delivered via CloudFront. You can also try loading the site from the original site URL. The site will fail as the SPA is now served from S3.
 
