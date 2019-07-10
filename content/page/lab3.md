@@ -44,8 +44,8 @@ Make a note of the username and password generated, by coping them to a new text
 #### Updating the SPA code repository
 
 SSH into your web server. You will need the certificate you created in lab 1.
- - Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
- - Click Connect to get the connection instructions.
+ - Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
+ - Click on Actions dropdown at the top -> Connect to get the connection instructions.
 
 Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-SPA repository.
 
@@ -189,7 +189,7 @@ As we will be using the AWS SDK for Javascript to handle the communication betwe
 npm install aws-sdk --save
 ```
 
-We need to update our application to support S3 based files. Using the tree view on the right, expand the TSAGallery-API folder, then the utils folder.
+We need to update our application to support S3 based files. Using the tree view on the left, expand the TSAGallery-API folder, then the utils folder.
 
 Double click on the config.js file to open it in an editor. You will need to add the following code block into the config. Firstly add a new line on 3, then paste the code block into the new blank line. Then update the two values to match your region and DataBucketName. Save the changes by clicking File and Save.
 
@@ -225,7 +225,7 @@ git push
 
 Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 
 Click Connect to get the connection instructions.
 
@@ -274,7 +274,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
+Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
 
 ```
   PipelineArtifacts:
@@ -445,7 +445,7 @@ Back in AWS console, select the S3 service.
 
 Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 57 onto the upload screen. Click Upload.
 
-Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start. The CloudFront distribution may take up to 10-15 minutes to start. This is due to the time it takes to propagate the new distribution to all the CloudFront Points of Presence. Once the update is finished, both Source and Deploy will show Succeeded.
+Select the CodePipeline service and select the TSABootstrap Pipeline to confirm it has run. It may take a few minutes to start. The CloudFront distribution may take up to 10-15 minutes to start. This is due to the time it takes to propagate the new distribution to all the CloudFront Points of Presence. Once the update is finished, both Source and Deploy will show Succeeded.
 
 Using the Outputs tab, retrieve the DistributionUrl. Open this URL in your web browser to view the site as delivered via CloudFront. You can also try loading the site from the original site URL. The site will fail as the SPA is now served from S3.
 
@@ -468,7 +468,7 @@ In this lab you achieved a lot. You have taken a big step towards modernising yo
 
 #### Cleanup
 
-To remove the resources you have created thus far:
+To remove the resources you have created so far:
 
 Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts buckets. These will named like tsa-bootstrap-pipelineartifacts-????? and *tsagallery-pipelineartifacts-?????**. You can empty a bucket using the Empty button after selecting the bucket in S3.
 

@@ -111,7 +111,7 @@ Back in AWS console, select the S3 service.
 
 Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 6 onto the upload screen. Click Upload.
 
-Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+Select the CodePipeline service and select the TSABootstrap Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
 #### Move the existing data
 
@@ -121,7 +121,7 @@ Scroll about half way down and click ** Retrieve secret value**. Copy the secret
 
 SSH into your web server. You will need the certificate you created in lab 1.
 
-Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 
 Click Connect to get the connection instructions.
 
@@ -133,8 +133,8 @@ mysqldump -u tsauser -pmy-secret-pw tsagallery > dump.sql
 
 Now we will push the data into the new Aurora database. You will need to replace the:
 
-- HOSTNAME with the host value from step 11
-- DATABASE_NAME with the dbname from step 11
+- HOSTNAME with value from Aurora cluster dashboard -> Connectivity & security tab.
+- DATABASE_NAME with value from Aurora cluster dashboard -> Configuration tab.
 
 When prompted, you need to copy and paste the password from step 11.
 
@@ -170,7 +170,7 @@ Save the changes to config.js.
 
 Open the app.js file by double clicking on the filename.
 
-We need to remove the old database connection logic and add the secrets manager code. Delete the following block from lines 50 to 57.
+We need to remove the old database connection logic and add the secrets manager code. Delete the following block from lines 37 to 44.
 
 ```
       app.locals.dbpool = mysql.createPool({
@@ -218,7 +218,7 @@ git push
 
 Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 
 Click Connect to get the connection instructions.
 

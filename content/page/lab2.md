@@ -291,7 +291,7 @@ Outputs:
       Name: !Sub "TSAGallery-DataBucket"
 ```     
 
-__Note:__ Why do we export the bucket name, but use parameters for the KeyName and SSHLocation? We want to be able to use the same CloudFormation templates for both production and non-production stacks so we ensure the infrastructure is consistent. As the data location would be shared, we can just export the value and import as needed. Non-production stacks should have a seperate key as developers may use thier own keys, and the SSH location could be a more relaxed range of IPs.
+__Note:__ Why do we export the bucket name, but use parameters for the KeyName and SSHLocation? We want to be able to use the same CloudFormation templates for both production and non-production stacks so we ensure the infrastructure is consistent. As the data location would be shared, we can just export the value and import as needed. Non-production stacks should have a seperate key as developers may use their own keys, and the SSH location could be a more relaxed range of IPs.
 
 Save that file as <b>bootstrap.yaml</b>. The full file can be found at the bottom of this document.
 
@@ -338,7 +338,7 @@ Click Create Folder. Enter the folder name "cloudformation" and click Save. Note
 Click on the new "cloudformation" folder to open it.
 Click Upload and drop the <b>Infra.yaml.zip</b> file from step 30 onto the upload screen. Click Upload.
 
-Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+Go to CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
 Confirm the changes
 
@@ -348,7 +348,7 @@ You should now be able to see PublicSubnetB, PrivateSubnetA and PrivateSubnetB, 
 
 #### Wrap-up
 
-In this lab you not only used CloudFormation to setup the landing zone you will use for the remainder of the labs, you also used CodePipeline to automate the deployment of these changes. We will continue to use this Pipeline as we add more services and resources to your account.
+In this lab you only used CloudFormation to setup the landing zone you will use for the remainder of the labs, you also used CodePipeline to automate the deployment of these changes. We will continue to use this Pipeline as we add more services and resources to your account.
 Talking points
 
 - We have setup public and private subnets. We can also setup three layers of subnets to better secure our public endpoints.
