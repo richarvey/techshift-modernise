@@ -251,7 +251,7 @@ Resources:
               Configuration:
                 S3Bucket: !Ref DataBucketName
                 PollForSourceChanges: true
-                S3ObjectKey: cloudformation/infra.yaml.zip
+                S3ObjectKey: cloudformation/infra.yml.zip
               OutputArtifacts:
                 - Name: SourceArtifact
 ```
@@ -277,7 +277,7 @@ Resources:
                 RoleArn: !GetAtt [PipelineRole, Arn]
                 Capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM
                 StackName: !Ref ChildStackName
-                TemplatePath: SourceArtifact::infra.yaml
+                TemplatePath: SourceArtifact::infra.yml
                 ParameterOverrides: 
                   !Sub 
                   - |
@@ -336,9 +336,9 @@ We want to be able to use the same CloudFormation templates for both production 
 
 29) On the Review TSA-Bootstrap page, scroll to the bottom. Click the 'I acknowledge that AWS CloudFormation might create IAM resources' option and click 'Create stack'.
 
-#### Deploy the new infra.yaml
+#### Deploy the new infra.yml
 
-30) Using your local computer, create a zip file containing the updated infra.yaml.
+30) Using your local computer, create a zip file containing the updated infra.yml.
 
 31) Select the S3 service.
 
@@ -348,7 +348,7 @@ We want to be able to use the same CloudFormation templates for both production 
 
 34) Click on the new cloudformation folder to open it.
 
-35) Click Upload and drop the Infra.yaml.zip file from step 30 onto the upload screen. Click Upload.
+35) Click Upload and drop the Infra.yml.zip file from step 30 onto the upload screen. Click Upload.
 
 36) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
