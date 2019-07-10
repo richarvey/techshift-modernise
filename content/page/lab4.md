@@ -172,7 +172,7 @@ mysql -u admin -p -h HOSTNAME DATABASE_NAME < dump.sql
 
 20) Open the app.js file by double clicking on the filename.
 
-21) We need to remove the old database connection logic and add the secrets manager code. Delete the following block from lines 50 to 57.
+21) We need to remove the old database connection logic and add the secrets manager code. Delete the following block from lines 37 to 44.
 
 ```
       app.locals.dbpool = mysql.createPool({
