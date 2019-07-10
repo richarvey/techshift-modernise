@@ -7,7 +7,7 @@ weight = -109
 
 ### Objectives
 
-The objective of this lab is to get your account setup ready for the TechShift Accelerate - Modernise labs.
+The objective of this lab is to get your account setup and ready for the TechShift Accelerate - Modernise labs.
 
 #### Reference Architecture
 
@@ -26,9 +26,11 @@ The objective of this lab is to get your account setup ready for the TechShift A
 - US East (Ohio)
 - US West (Oregon)
 
-Why only these regions? Not all services are available in all regions. During these labs, we will make use of the Cloud9 service to update our application code. Cloud9 is only available in the regions listed above. You can see what services are available in each region by visiting: [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
+Why only these regions? Not all services are available in all regions.
 
-If you cannot select a region, you must first select a service that is not Global. For example, selecting the EC2 service will enable region selection.
+During these labs, we will make use of the Cloud9 service to update our application code. Cloud9 is only available in the regions listed above. You can see which services are available in each region by visiting: [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
+
+If you cannot select a region, you may be viewing a service which is a 'global' service such as IAM or Route53. Selecting the EC2 service will enable region selection.
 
 #### Creating a SSH Certificate
 
@@ -44,29 +46,31 @@ If you cannot select a region, you must first select a service that is not Globa
 
 #### Setup the base infrastructure
 
-7) Copy the infra.yaml from the Assets section below and save as infra.yaml on your local computer.
+7) Download the infra.yaml from the 'Assets' section below and save as infra.yaml on your local computer.
 
-8) Select the AWS CloudFormation service.
+8) Back in the AWS console, select the AWS CloudFormation service.
 
 9) Select Create stack.
 
-10) Select Upload a template file and click Choose file. When prompted select the CloudFormation template downloaded in step 7.
+10) Under 'Specify Template', select 'Upload a template file' and click 'Choose file'. When prompted select the CloudFormation template downloaded from the Assets section.
 
-11) Click Next.
+11) Click 'Next'.
 
-12) Enter TSAGallery for the Stack name and select the key you created in step 6 in KeyName. Click Next.
+12) Enter 'TSAGallery' for the Stack name and under 'KeyName' select the key you created earlier from the drop-down box. Click 'Next'.
 
-13) Leave all options blank and click Next at the bottom of the page.
+13) You do not need to modify any options on the next page, click 'Next' at the bottom of the page.
 
-14) Check the tickbox labeled I acknowledge that AWS CloudFormation might create IAM resources with custom names and click Create stack.
+14) At the bottom of the page, check the tickbox labelled 'I acknowledge that AWS CloudFormation might create IAM resources with custom names' and click 'Create stack'.
 
-15) Wait until the Stack status shows as Complete.
+15) Wait until the stack 'Status' shows as 'Complete'.
 
 #### View our Photo Gallery
 
-16) Select the Outputs tab. There will be a single output called URL. You can copy and paste the Value into your browser to view the running photo gallery. Note: Once the stack shows complete, the photo gallery may still be starting up. Just wait a minute or two and reload the page.
+16) Select the 'Outputs' tab. There will be a single output called 'URL'. You can click on the 'Value' or copy and paste the URL into your browser window to view the running photo gallery.
 
-17) You can use the photo gallery to view the files. The access the site adminstration, click on the Current User: Guest in the top corner. Enter the username admin and the password 2happymonkeys!
+__Note__: Once the stack shows as complete, the photo gallery may still be starting up. Just wait a minute or two and reload the page.
+
+17) You can use the photo gallery application to view photos. To access the site administration page, click on 'Current User: Guest' in the top right corner. Enter the username 'admin' and the password '2happymonkeys!' (without the apostrophe!)
 
 #### Assets
 
