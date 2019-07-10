@@ -18,7 +18,7 @@ The objective of this lab is to move the session cache from an in-proc provider 
 
 Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-We need to define our DynamoDb properties. In this case we are using PAY_PER_REQUEST which allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDb to automatically delete any records have expired. It does this by comparing the time stored in the attributed defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
+We need to define our DynamoDb properties. In this case we are using PAY_PER_REQUEST which allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDb to automatically delete any records have expired. It does this by comparing the time stored in the attribute defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
 
 ```
   DynamoDBCache:
@@ -58,7 +58,7 @@ Back in AWS console, select the S3 service.
 
 Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 4 onto the upload screen. Click Upload.
 
-Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+Select the CodePipeline service and select the TSABootstrap Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
 #### Update the application to use DynamoDb
 
@@ -98,7 +98,7 @@ git push
 
 Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 - Click Connect to get the connection instructions.
 
 If the prompt starts with ec2-user@, enter the command as follows to resume as root. The prompt will change to root@.
@@ -124,14 +124,14 @@ forever list
 
 Confirm the application is still working by opening the CloudFront Distribution URL in your browser.
 
-We can confirm our changes are using the new DynamoDB table by selecting the DynamoDB service, then click Tables from the left hand menu. Click on the TSAGalleryCache table name to open the table, then click the Items* tab to view the tables current items. We should see a number of items that are the cache. If we have logged in as Admin, we will also sea one or more session:... records.
+We can confirm our changes are using the new DynamoDB table by selecting the DynamoDB service, then click Tables from the left hand menu. Click on the TSAGalleryCache table name to open the table, then click the Items* tab to view the tables current items. We should see a number of items that are the cache. If we have logged in as Admin, we will also see one or more session:... records.
 
 ### Wrap-up
 
 In this lab we have setup a DynamoDB table and updated the API to use the new DynamoDB table for session and cache data.
 Talking points
 
-- Dynamo DB vs ElastiCache
+- DynamoDB vs ElastiCache
 
 ### Cleanup
 
