@@ -343,7 +343,7 @@ __Note:__ Why do we export the bucket name, but use parameters for the KeyName a
 
 35) Click Upload and drop the Infra.yaml.zip file from step 30 onto the upload screen. Click Upload.
 
-36) Select the CodePipeline service and select the TSAGallery-Infra Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
+36) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
 #### Confirm the changes
 

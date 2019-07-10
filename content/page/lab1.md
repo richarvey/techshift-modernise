@@ -34,7 +34,7 @@ If you cannot select a region, you must first select a service that is not Globa
 
 2) Select the EC2 service.
 
-3) Select Key Pairs from the right side menu.
+3) Select Key Pairs from the left side menu.
 
 4) Click Create Key Pair.
 

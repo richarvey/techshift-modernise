@@ -49,7 +49,7 @@ __Note:__ While we have been using CloudFormation to setup the resources we are 
 
 11) SSH into your web server. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the right hand menu and tick the box next to the TSAGallery::WebServer
+- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 - Click Connect to get the connection instructions.
 
 12) Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-SPA repository.
@@ -472,7 +472,7 @@ In this lab you achieved a lot. You have taken a big step towards modernising yo
 
 ### Clean-up
 
-To remove the resources you have created thus far:
+To remove the resources you have created so far:
 
 1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts buckets. These will named like tsa-bootstrap-pipelineartifacts-????? and *tsagallery-pipelineartifacts-?????**. You can empty a bucket using the Empty button after selecting the bucket in S3.
 
