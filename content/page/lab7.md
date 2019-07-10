@@ -161,7 +161,7 @@ __Ensure you have changed the IMAGENAME__. If you do not, your stack will not be
 
 #### Using an Application Load Balancer (ALB)
 
-The Application Load Balancer (ALB) is used to receive incoming requests and route them to a copy of the running Docker image in Fargate. To use a ALB we need to define three components. The actual ALB instance, a listener and a target group. The ALB hosts both the listener and target group. The listener defines what port to listen on, in our case HTTP on port 80. It then sends the traffic to the target group.
+The Application Load Balancer (ALB) is used to receive incoming requests and route them to a copy of the running Docker image in Fargate. To use an ALB we need to define three components. The actual ALB instance, a listener and a target group. The ALB hosts both the listener and target group. The listener defines what port to listen on, in our case HTTP on port 80. It then sends the traffic to the target group.
 
 9) To add a load balancer add the following between the APIService and the Outputs section.
 
@@ -308,7 +308,7 @@ and change it to read:
 
 #### Update the build process
 
-17) As we will be building the Docker image is built using Code Pipeline we need to update the APIBuildProject to include the Fargate cluster and service details. In the APIBuildProject we need to add three additional environment variables. Add the following to the EnvironmentVariables section of the APIBuildProject directly above the Artifacts.
+17) As we will be building the Docker image using Code Pipeline we need to update the APIBuildProject to include the Fargate cluster and service details. In the APIBuildProject we need to add three additional environment variables. Add the following to the EnvironmentVariables section of the APIBuildProject directly above the Artifacts.
 
 ```
           -
@@ -329,11 +329,11 @@ and change it to read:
 
 19) Back in AWS console, select the S3 service.
 
-20) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 18 onto the upload screen. Click Upload. This will update our Cloudformation stack. Once the update has finished, we can test the site using the CloudFront distribution URL.
+20) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 18 onto the upload screen. Click Upload. This will update our CloudFormation stack. Once the update has finished, we can test the site using the CloudFront distribution URL.
 
 21) We also need to update the buildspec so that it will update the running Fargate images after each build. Select the Cloud9 service and click Open IDE to re-open the editor.
 
-22) Add another blank line on line 25 after docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/tsa/gallery:latest and insert the following block into the blank line:
+22) Add another blank line on line 26 after docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/tsa/gallery:latest and insert the following block into the blank line:
 
 ```
       - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment
