@@ -1,12 +1,14 @@
 baseURL = "https://awstechshift.com/"
 disablePathToLower = true
 languageCode = "en-us"
-title = "AWS Techshift Modernise"
+title = "AWS TechShift Modernise"
 theme = "docter"
 
 [params]
   # the name of your project and a link back to the home page
-  home = "AWS Techshift"
+  home = "AWS TechShift"
+  # Name of your site reflected in <title>
+  name = "AWS TechShift"
   # A small snippet of text above the sidebar:
   subtitle = "Modernise"
 
@@ -19,7 +21,7 @@ theme = "docter"
 
   # Add a reference to a logo, which will appear in the top right
   logourl = "img/techshift.png"
-  logoalt = "AWS Techshift"
+  logoalt = "AWS TechShift"
 
   # Mention your hosting provider 
   hosted_on = "Amazon S3"
