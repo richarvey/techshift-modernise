@@ -9,7 +9,7 @@ weight = -92
 
 The objective of this lab is to decouple the thumbnail creation from our server so it does not block the user using the site.
 
-As we will be using a SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generators queue, we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Amazon Rekognition service to process our images and generate tags. This lab includes:
+As we will be using an SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generators queue, we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Amazon Rekognition service to process our images and generate tags. This lab includes:
 
 - Update our CloudFormation Template to include an SNS topic, an SQS queue and the Lambda processor
 - Update our site code to remove the thumbnail creation logic and publish a message onto the SNS topic
