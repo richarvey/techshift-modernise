@@ -56,7 +56,7 @@ If you cannot select a region, you may be viewing a service which is a 'global' 
 
 11) Click 'Next'.
 
-12) Enter 'TSAGallery' for the Stack name and under 'KeyName' select the key you created earlier from the dropdown box. Click 'Next'.
+12) Enter 'TSAGallery' for the Stack name and under 'KeyName' select the key you created earlier from the drop-down box. Click 'Next'.
 
 13) You do not need to modify any options on the next page, click 'Next' at the bottom of the page.
 
@@ -70,7 +70,7 @@ If you cannot select a region, you may be viewing a service which is a 'global' 
 
 __Note__: Once the stack shows as complete, the photo gallery may still be starting up. Just wait a minute or two and reload the page.
 
-17) You can use the photo gallery application to view photos. To access the site administration page, click on Current User: Guest' in the top right corner. Enter the username 'admin' and the password '2happymonkeys!' (without the apostrophe!)
+17) You can use the photo gallery application to view photos. To access the site administration page, click on 'Current User: Guest' in the top right corner. Enter the username 'admin' and the password '2happymonkeys!' (without the apostrophe!)
 
 #### Assets
 
