@@ -60,7 +60,7 @@ If you cannot select a region, you may be viewing a service which is a 'global' 
 
 13) You do not need to modify any options on the next page, click 'Next' at the bottom of the page.
 
-14) At the bottom of the page, check the tickbox labeled 'I acknowledge that AWS CloudFormation might create IAM resources with custom names' and click 'Create stack'.
+14) At the bottom of the page, check the tickbox labelled 'I acknowledge that AWS CloudFormation might create IAM resources with custom names' and click 'Create stack'.
 
 15) Wait until the stack 'Status' shows as 'Complete'.
 
@@ -70,7 +70,7 @@ If you cannot select a region, you may be viewing a service which is a 'global' 
 
 __Note__: Once the stack shows as complete, the photo gallery may still be starting up. Just wait a minute or two and reload the page.
 
-17) You can use the photo gallery application to view photos. To access the site adminstration page, click on Current User: Guest' in the top right corner. Enter the username 'admin' and the password '2happymonkeys!' (without the apostrophe!)
+17) You can use the photo gallery application to view photos. To access the site administration page, click on Current User: Guest' in the top right corner. Enter the username 'admin' and the password '2happymonkeys!' (without the apostrophe!)
 
 #### Assets
 
