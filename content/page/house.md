@@ -27,5 +27,6 @@ It is good to check for these items:
 - Experiment with moving out more features into Lambda
 - Play with Auto Scaling the Fargate Tasks
 - Look at CloudWatch Monitoring actions
+- Explore <a href="https://aws.amazon.com/cdk/">AWS CDK</a>, an open source software development framework to model and provision your cloud application resources using familiar programming languages
 
 We are looking for feedback on this event and the content, contributions are welcome as GitHub issues or pull requests.
