@@ -291,7 +291,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 50) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
+51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts separate. Add a new S3 bucket between PipelineRole and the Output section.
 
 ```
   PipelineArtifacts:
@@ -456,7 +456,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
     Description: CloudFront Distribution URL
 ```
 
-57) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+57) Save the changes to your infra.yml file and create a zip file called infra.yml.zip containing the updated file.
 
 58) Back in AWS console, select the S3 service.
 
