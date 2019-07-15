@@ -19,7 +19,7 @@ Through a series of technical workshops, access to specialist personnel and co-i
 
 ## Modernise
 
-Spread over 2 consecutive days, this workshop is part of a phased program aimed at ISVs that that are looking to deploy their application using a scalable, self-healing architecture on AWS. ISV's will learn design patterns for optimizing applications using AWS managed services including auto scaling, load balancing, configuration management, NoSQL databases, containers and how to incorporate a CI/CD pipeline for deployment. The following AWS services are covered:
+Spread over 2 consecutive days, this workshop is part of a phased program aimed at ISVs that are looking to deploy their application using a scalable, self-healing architecture on AWS. ISV's will learn design patterns for optimizing applications using AWS managed services including auto scaling, load balancing, configuration management, NoSQL databases, containers and how to incorporate a CI/CD pipeline for deployment. The following AWS services are covered:
 
 
 - Elastic Load Balancer (ELB)
