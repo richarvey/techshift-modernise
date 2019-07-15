@@ -19,7 +19,7 @@ Techshift is a multi-phased program for ISV’s to accelerate the transformation
 - Technical Workshops to train your development team
 - Access to Solution Architects to validate your solution
 - Sandbox Credits to build and test your solutions
-- Access to a Success Manger to build a GTM Plan
+- Access to a Success Manager to build a GTM Plan
 
 #### Benefits
 
