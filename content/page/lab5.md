@@ -20,9 +20,9 @@ The objective of this lab is to move the session cache to a DynamoDB. This lab i
 
 #### Add a DynamoDB table to CloudFormation
 
-1) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
+1) Open / switch to the CloudFormation infra.yml template you have been working on in the previous labs in your favourite text editor.
 
-2) We need to define our DynamoDb properties. In this case we are using PAY_PER_REQUEST which allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDb to automatically delete any records have expired. It does this by comparing the time stored in the attribute defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
+2) We need to define our DynamoDB properties. We are using PAY_PER_REQUEST which is DynamoDB On-Demand pricing and allows for unpredictable workloads. We are also setting the TimeToLiveSpecification which tells DynamoDB to automatically delete any records that have expired. It does this by comparing the time stored in the attribute defined by the AtttributeName with the current time in epoch time format. If the stored time is smaller (earlier) than the current time, the item is marked as expired and subsequently deleted. Add the following between the CFDistribution and the Outputs sections.
 
 ```
   DynamoDBCache:
@@ -56,17 +56,17 @@ The objective of this lab is to move the session cache to a DynamoDB. This lab i
                 Resource: "*"
 ```
 
-4) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+4) Save the changes to your infra.yml file and create a zip file called infra.yml.zip containing the updated template.
 
 5) Back in AWS console, select the S3 service.
 
-6) Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 4 onto the upload screen. Click Upload.
+6) Select our data bucket. Click Upload and drop the infra.yml.zip file from step 4 onto the upload screen. Click Upload.
 
 7) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
-#### Update the application to use DynamoDb
+#### Update the application to use DynamoDB
 
-8) We need to find the name of our newly created DynamoDB table. There are two ways to find the table name. Either via the DynamoDB console, or CloudFormation. As the table belongs to our CloudFormation stack, and we may have multiple, we will use CloudFormation. Select the CloudFormation service and click TSAGallery stack from the stack list.
+8) We need to find the name of our newly created DynamoDB table. You can find the name either via the DynamoDB console, CLI/API or CloudFormation. As the table belongs to our CloudFormation stack we will use CloudFormation. Select the CloudFormation service and click TSAGallery stack from the stack list.
 
 9) Click the Resources tab and find the resource with a Logical ID of DynamoDBCache. Copy the Physical ID. This is the table name we will need later.
 
@@ -100,10 +100,10 @@ git push
 
 #### Updating the server
 
-16) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
+16) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, 'packet_write_wait...' Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
-- Click Connect to get the connection instructions.
+- Select the EC2 service, select 'Instances' from the left hand menu and tick the box next to the 'TSAGallery::WebServer'
+- Click 'Connect' to get the connection instructions.
 
 17) If the prompt starts with ec2-user@, enter the command as follows to resume as root. The prompt will change to root@.
 
