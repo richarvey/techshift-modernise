@@ -9,11 +9,11 @@ weight = -102
 
 The objective of this lab is move the static portions of the solution from the application to a S3 bucket served using Amazon CloudFront. This lab includes:
 
-- Setup a CodeCommit repository for the SPA and copy the SPA code.
+- Setting up an AWS CodeCommit repository for the Single Page Application (SPA) and copy the SPA code to it.
 - Updating our CloudFormation template to include a CodePipeline, S3 bucket and CloudFront distribution.
-- Run the CodePipeline to deploy the SPA into the S3 bucket.
-- Copy our image assets to our asset S3 bucket.
-- Update our application to store static assets such as thumbnails and images in the S3 bucket.
+- Running the CodePipeline to deploy the SPA into the S3 bucket.
+- Copying our image assets to our asset S3 bucket.
+- Updating our application to store static assets such as thumbnails and images in the S3 bucket.
 
 #### Reference Architecture
 
@@ -25,17 +25,19 @@ The objective of this lab is move the static portions of the solution from the a
 
 #### Setup CodeCommit
 
-__Note:__ While we have been using CloudFormation to setup the resources we are using, for the code repositories we will be manually setting them up. In a development environment, you do not want your code repositories to be tied to the infrastructure. By creating these independently to the infrastructure, we can replicate the infrastructure using CloudFormation, while referencing the separate code repositories.
+__Note:__ While we have been using CloudFormation to setup the resources we are using, for the code repositories we will be setting them up manually. In a development environment, you do not want your code repositories to be tied to the infrastructure. By creating these independently to the infrastructure, we can replicate the infrastructure using CloudFormation, while referencing the separate code repositories.
 
-2) Select the CodeCommit service and click Create repository.
+2) Select the CodeCommit service and click 'Create repository'.
 
-3) Enter TSAGallery-SPA as the Repository name and click Create. SPA stands for Single Page Application. Generally an SPA is simply a web site where the site is delivered via a single HTML page that "talks" to an API for the data. This includes sites built using Angular and React frameworks.
+3) Enter 'TSAGallery-SPA' as the Repository name and click 'Create'.
 
-4) Click Repositories from the left hand menu, then click Create repository again.
+SPA stands for Single Page Application. Generally an SPA is simply a web site where the site is delivered via a single HTML page that "talks" to an API for the dynamic data portions of the application. This includes sites built using popular frameworks such as Angular and React.
 
-5) Enter TSAGallery-API as the Repository name and click Create. API stands for Application Programming Interface and is the server side of our application. The SPA will "talk" to this API to get photos and data.
+4) Click 'Repositories' from the left hand menu, then click 'Create repository' again.
 
-6) Select the IAM service and click Users.
+5) Enter 'TSAGallery-API' as the Repository name and click 'Create'. API stands for Application Programming Interface and is the server side of our application. The SPA will "talk" to this API to get photos and data.
+
+6) Select the IAM service and click 'Users'.
 
 7) Click on the user you use to log into the console to open the user summary.
 
@@ -45,15 +47,21 @@ __Note:__ While we have been using CloudFormation to setup the resources we are 
 
 10) Make a note of the username and password generated, by coping them to a new text document, as you will need these later.
 
+__Note:__ If you are using a Federated User rather than an IAM user, you will not be able to create git credentials. Instead, we have added CodeCommit access to the instance IAM role. You can run the AWS CLI codecommit credentials-helper to enable you to clone the repositories successfully from within the instance.
+```
+git config --global credential.helper '!aws codecommit credential-helper $@'
+git config --global credential.UseHttpPath true
+```
+
 #### Updating the SPA code repository
 
 11) SSH into your web server. You will need the certificate you created in lab 1.
- - Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
- - Click on Actions dropdown at the top -> Connect to get the connection instructions.
+ - Select the EC2 service, select 'Instances' from the left hand menu and tick the box next to the 'TSAGallery::WebServer'
+ - Click on 'Actions' drop-down at the top -> 'Connect' to get the connection instructions.
 
-12) Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-SPA repository.
+12) Once you have connected to your web server via SSH, we need to clone the empty CodeCommit repository. In the browser, select the CodeCommit service and click on the 'TSAGallery-SPA' repository.
 
-13) Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this URL as the SPA Git URL.
+13) Click on the 'Clone URL' button and then 'Clone HTTPS' to copy the clone URL to your clipboard. Make a note in a text file of this URL as the SPA Git URL.
 
 14) Back in the SSH terminal window, enter the following commands. After the git clone command paste the copied SPA Git URL. When prompted, enter the username and password from step 10.
 
@@ -93,7 +101,13 @@ git push
 
 If prompted, enter the username and password from step 10.
 
-19) You can now confirm that the code has been committed by selecting the CodeCommit service and clicking on the TSAGallery-SPA repository. The repository should contain two folders and two files.
+__Note:__ If you are using a Federated User rather than an IAM user, you will not be able to create git credentials. Although we ran these commands earlier, we just switched to the root user so need to re-run them:
+```
+git config --global credential.helper '!aws codecommit credential-helper $@'
+git config --global credential.UseHttpPath true
+```
+
+19) You can now confirm that the code has been committed by selecting the CodeCommit service and clicking on the 'TSAGallery-SPA' repository.
 
 #### Copy image assets to S3
 
@@ -134,7 +148,7 @@ git add .gitignore
 git commit -m "Initial Commit"
 ```
 
-26) We need to connect our local Git repository with our CodeCommit repository. In the browser, select the CodeCommit service and click on the TSAGallery-API repository. Click on the Clone URL button and then Clone HTTPS to copy the clone URL to your clipboard. Make a note in a text file of this URL as the API Git URL.
+26) We need to connect our local Git repository with our CodeCommit repository. In the browser, select the CodeCommit service and click on the 'TSAGallery-API' repository. Click on the 'Clone URL' button and then 'Clone HTTPS' to copy the clone URL to your clipboard. Make a note in a text file of this URL as the API Git URL.
 
 27) Back in the SSH terminal window, run the following command. You will need to paste the copied Clone URL at the end.
 
@@ -157,17 +171,17 @@ __Note:__ If you are comfortable editing source code on your local computer, the
 
 29) First we will get a public subnet id. The Cloud9 instance must run in a public network in order for you to be able to use it from your local computer. Select the VPC service and click Subnets to view all your subnets.
 
-30) Find one of the two public subnets. They will be named TSAGallery::PublicSubnetA and TSAGallery::PublicSubnetB. Make a note of the Subnet ID and the VPC ID.
+30) Find one of the two public subnets. They will be named 'TSAGallery::PublicSubnetA' and 'TSAGallery::PublicSubnetB'. Make a note of the Subnet ID and the VPC ID.
 
-31) Select the Cloud9 service, and click Create environment.
+31) Select the Cloud9 service, and click 'Create environment'.
 
-32) Enter TSAGallery-Editor as the Name. Click Next step.
+32) Enter 'TSAGallery-Editor' as the Name. Click 'Next step'.
 
-33) Select t2.small as the Instance type. At the bottom, expand the Network settings (advanced).
+33) Select 't2.small' as the Instance type. At the bottom, expand the 'Network settings (advanced)'.
 
 34) Select the VPC ID from step 29, and then the Subnet ID also from step 29.
 
-35) Click Next step and then Create environment. Creating your Cloud9 environment may take a few minutes. Once it has loaded, you can use the terminal at the bottom of the screen to enter the git commands in the next section.
+35) Click 'Next step' and then Create environment. Creating your Cloud9 environment may take a few minutes. Once it has loaded, you can use the terminal at the bottom of the screen to enter the git commands in the next section.
 
 #### Updating the server code
 
@@ -193,13 +207,13 @@ npm update
 npm install aws-sdk --save
 ```
 
-39) We need to update our application to support S3 based files. Using the tree view on the left, expand the TSAGallery-API folder, then the utils folder.
+39) We need to update our application to support S3 based files. Using the tree view on the left, expand the 'TSAGallery-API' folder, then the 'utils' folder.
 
-40) Double click on the config.js file to open it in an editor. You will need to add the following code block into the config. Firstly add a new line on 3, then paste the code block into the new blank line. Then update the two values to match your region and DataBucketName. Save the changes by clicking File and Save.
+40) Double click on the 'config.js' file to open it in an editor. You will need to add the following code block into the config. Firstly add a new line on 3, then paste the code block into the new blank line. Then update the two values to match your region and DataBucketName. Save the changes by clicking 'File' and 'Save'.
 
 To find the correct region id for your configuration, ensure the correct region is selected and look in the URL for the AWS console when you are viewing the AWS console home page.
 
-EG. For Singapore the home page is at https://ap-southeast-1.console.aws.amazon.com/console/home?region=ap-southeast-1# and the region is ap-southeast-1.
+e.g. For Singapore the home page is at https://ap-southeast-1.console.aws.amazon.com/console/home?region=ap-southeast-1# and the region is ap-southeast-1.
 
 ```
     aws: {
@@ -210,13 +224,13 @@ EG. For Singapore the home page is at https://ap-southeast-1.console.aws.amazon.
 
 41) The updated code for saving files into S3 can be found in the filesystem.lab3.js file. Take a look at the deletePublic and moveFileToPublic functions and compare them to the same files in filesystem.js.
 
-42) We need to update the project to use the new filesystem. Expand the bin folder under the TSAGallery-API folder. Double click on the www.js file. Update line 29 to read:
+42) We need to update the project to use the new filesystem. Expand the 'bin' folder under the 'TSAGallery-API' folder. Double click on the www.js file. Update line 29 to read:
 
 ```
 app.locals.fs = new (require("../utils/filesystem.lab3"))(app);
 ```
 
-Save the changes by clicking File and Save.
+Save the changes by clicking 'File' and 'Save'.
 
 43) In the bash panel at the bottom of the screen, commit the changes to CodeCommit.
 
@@ -227,9 +241,9 @@ git push
 
 #### Updating the server
 
-44) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
+44) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, 'packet_write_wait... Broken pipe'. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
+- Select the EC2 service, select 'Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
 - Click Connect to get the connection instructions.
 
 45) If the prompt starts with ec2-user@, enter the command as follows to resume as root. The prompt will change to root@.
@@ -277,7 +291,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 50) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
 
-51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts seperate. Add a new S3 bucket between PipelineRole and the Output section.
+51) Again we need an S3 bucket for CodePipeline to store it's artifacts. We have the option of storing these artifacts in the same bucket as the Bootstrap pipeline, but we want to keep the infrastructure and bootstrap artifacts separate. Add a new S3 bucket between PipelineRole and the Output section.
 
 ```
   PipelineArtifacts:
@@ -442,7 +456,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
     Description: CloudFront Distribution URL
 ```
 
-57) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+57) Save the changes to your infra.yml file and create a zip file called infra.yml.zip containing the updated file.
 
 58) Back in AWS console, select the S3 service.
 

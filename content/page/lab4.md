@@ -22,7 +22,7 @@ The objective of this lab is move our database off the single instance to highly
 
 #### Add Aurora Serverless to CloudFormation
 
-1) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
+1) Open / switch to the CloudFormation infra.yml template you have been working on in the previous labs in your favourite text editor.
 
 2) For a database, we first need a Database Subnet Group. Add the following between the CFDistribution and the Outputs sections.
 
@@ -108,11 +108,11 @@ The objective of this lab is move our database off the single instance to highly
                 Resource: "*"
 ```
 
-6) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+6) Save the changes to your infra.yml file and create a zip file called infra.yml.zip containing the updated template.
 
 7) Back in AWS console, select the S3 service.
 
-8) Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 6 onto the upload screen. Click Upload.
+8) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 6 onto the upload screen. Click Upload.
 
 9) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
@@ -120,12 +120,12 @@ The objective of this lab is move our database off the single instance to highly
 
 10) To move the data, we will need to get the database access details. Select the Secrets Manager service then select the secret named TSAGallery-RDSMasterSecret. If the secret is not named TSAGallery-RDSMasterSecret, make a note of the new name so we can use it later.
 
-11) Scroll about half way down and click ** Retrieve secret value**. Copy the secret values and paste them into a text file as we will need them later.
+11) Scroll about half way down and click **Retrieve secret value**. Copy the secret values and paste them into a text file as we will need them later.
 
 12) SSH into your web server. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
-- Click Connect to get the connection instructions.
+- Select the EC2 service, select 'Instances' from the left hand menu and tick the box next to 'TSAGallery::WebServer'
+- Click 'Connect' to get the connection instructions.
 
 13) Enter the following command to export your current database to a file.
 
@@ -185,7 +185,7 @@ mysql -u admin -p -h HOSTNAME DATABASE_NAME < dump.sql
       });
 ```
 
-22) And add the following code block back starting on line 50.
+22) And add the following code block back starting on line 37.
 
 ```
       var AWS = require('aws-sdk');
@@ -218,10 +218,10 @@ git push
 
 #### Updating the server
 
-25) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, packet_write_wait... Broken pipe. In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
+25) Return to the SSH terminal window. If the connection has been closed, you will get a message stating, 'packet_write_wait... Broken pipe.' In this case you will need to SSH back into your web server and return to the root user. You will need the certificate you created in lab 1.
 
-- Select the EC2 service, select Instances from the left hand menu and tick the box next to the TSAGallery::WebServer
-- Click Connect to get the connection instructions.
+- Select the EC2 service, select 'Instances' from the left hand menu and tick the box next to the 'TSAGallery::WebServer'
+- Click 'Connect' to get the connection instructions.
 
 26) If the prompt starts with ec2-user@, enter the command as follows to resume as root. The prompt will change to root@.
 
