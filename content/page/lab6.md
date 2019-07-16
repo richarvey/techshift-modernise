@@ -42,7 +42,7 @@ In order to use a load balancer we need to setup an endpoint to act as a health 
 
 7) Open the app.js file in the TSAGallery-API folder.
 
-8) On line 35, above the comment // make sure database is connected add 2 new lines, then add the following function in the new space.
+8) On line 35, above the comment '// make sure database is connected', add 2 new lines, then add the following function in the new space.
 
 ```
   app.get('/api/health', async function(req, res, next) {
@@ -184,9 +184,9 @@ git commit -a -m "Add CodeBuild buildspec"
 git push
 ```
 
-#### Add a CodePipeline to our infra.yaml
+#### Add a CodePipeline to our infra.yml
 
-20) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
+20) Open / switch to the CloudFormation infra.yml template you have been working on in the previous labs in your favourite text editor.
 
 21) Firstly, we need to have a build number for our docker images. Add the following between the DynamoDBCache and the Outputs section.
 
@@ -288,11 +288,17 @@ git push
                 ProjectName: !Ref APIBuildProject
 ```
 
-24) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+24) Save the changes to your infra.yml file and create a zip file containing the updated infra.yml.
+
+Did you know you could do all of this via the CLI? or had you worked that out by now?
+```
+zip infra.yml.zip infra.yml
+aws s3 cp infra.yml.zip s3://your-tsagallery.companyname.com/cloudformation/infra.yml.zip
+```
 
 25) Back in AWS console, select the S3 service.
 
-26) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 24 onto the upload screen. Click Upload.
+26) Select our data bucket. Click Upload and drop the infra.yml.zip file from step 24 onto the upload screen. Click Upload.
 
 27) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start and run. Both Source and Deploy should now show Succeeded.
 
@@ -308,15 +314,15 @@ git push
 
 32) Leave the t2.micro row selected and click Next: Configure Details.
 
-33) For the Network, select the TSAGallery::VPC, and ensure the TSAGallery::PublicSubnetA is selected for the Subnet.
+33) For the Network, select the 'TSAGallery::VPC', and ensure the 'TSAGallery::PublicSubnetA' is selected for the Subnet.
 
-34) Click Next: Add Storage, then click Next: Add Tags.
+34) Click 'Next: Add Storage', then click 'Next: Add Tags'.
 
-35) Click Add Tag. Enter a Key of Name and a Value of TempServer.
+35) Click Add Tag. Enter a Key of 'Name' and a Value of 'TempServer'.
 
-36) Click Next: Configure Security Group.
+36) Click 'Next: Configure Security Group.'
 
-37) Select "Select existing security group" and select the TSAGallery-PublicSecurityGroup-xxx security group. Then click Review and Launch.
+37) Select "Select existing security group" and select the TSAGallery-PublicSecurityGroup-xxx security group. Then click 'Review and Launch'.
 
 38) Click Launch. Select the tsa-region key pair we are using for this lab. Tick the box to acknowledge that I have access to the selected private key and click Launch Instances.
 
@@ -349,9 +355,9 @@ docker info
  - In the AWS console, select the IAM service and click Roles from the left hand menu.
  - Click Create role.
  - Click EC2 under the Choose the service that will use this role and click Next: Permissions.
- - As this is a temporary role, we will just add AdministratorAccess. For roles that will be used for more than a quick test, we should only add the specific permissions that are needed. In our CloudFormation created roles, we are using more specific permissions. Tick the tickbox on the AdministratorAccess line.
+ - As this is a temporary role, we will just add the managed policy: 'AmazonEC2ContainerRegistryReadOnly'. This provides the instance read-only access to our ECR repository. IAM policies can be extremely granular and it is best practice to only add the specific permissions that are needed. In our CloudFormation created roles, we are using more specific permissions. Tick the tickbox on the 'AmazonEC2ContainerRegistryReadOnly' line.
  - Click Next: Tags and Next: Review.
- - Give the new role a Role name of TempServerRole and click Create role.
+ - Give the new role a Role name of 'TempServerRole' and click Create role.
 
 45) Select the EC2 service and click Running Instances to view the instances.
 
