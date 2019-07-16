@@ -23,7 +23,7 @@ The objective of this lab is to take our new docker image and host it using ECS 
 
 Fargate needs permission to execute and to access various resources
 
-1) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
+1) Open / switch to the CloudFormation infra.yml template you have been working on in the previous labs in your favourite text editor.
 
 2) Add the following role definition between the APIPipeline and the Outputs section.
 
@@ -261,7 +261,7 @@ and change it to read:
 
 #### Decommission our last server
 
-15) Now that we have moved our API into Fargate serverless, we can remove our EC2 instance. Locate the WebServer in our infra.yaml and delete it. You need to delete the following block:
+15) Now that we have moved our API into Fargate serverless, we can remove our EC2 instance. Locate the WebServer in our infra.yml and delete it. You need to delete the following block:
 
 ```
   WebServer:
@@ -325,13 +325,19 @@ and change it to read:
             Value: !Ref CFDistribution
 ```
 
-18) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+18) Save the changes to your infra.yml file and create a zip file containing the updated infra.yml.
+
+Did you know you could do all of this via the CLI? or had you worked that out by now?
+```
+zip infra.yml.zip infra.yml
+aws s3 cp infra.yml.zip s3://your-tsagallery.companyname.com/cloudformation/infra.yml.zip
+```
 
 19) Back in AWS console, select the S3 service.
 
 20) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 18 onto the upload screen. Click Upload. This will update our CloudFormation stack. Once the update has finished, we can test the site using the CloudFront distribution URL.
 
-21) We also need to update the buildspec so that it will update the running Fargate images after each build. Select the Cloud9 service and click Open IDE to re-open the editor.
+21) We also need to update the buildspec.yml file so that it will update the running Fargate images after each build. Select the Cloud9 service and click Open IDE to re-open the editor.
 
 22) Add another blank line on line 26 after docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/tsa/gallery:latest and insert the following block into the blank line:
 
