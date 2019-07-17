@@ -74,7 +74,7 @@ The objective of this lab is to move the session cache to a DynamoDB. This lab i
 
 11) Again we need to update the config. If the config.js file is not open, double click on the file to re-open it. Add a new line at the end of line 6.
 
-12) Add the following value to the new blank line 6. If the table name was different on step 9, replace the table name value.
+12) Add the following value to the new blank line. If the table name was different on step 9, replace the table name value.
 
 ```
       dynamoTable: process.env.CACHETABLE || 'TSAGalleryCache',
