@@ -9,12 +9,12 @@ weight = -92
 
 The objective of this lab is to decouple the thumbnail creation from our server so it does not block the user using the site.
 
-As we will be using an SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generators queue, we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Amazon Rekognition service to process our images and generate tags. This lab includes:
+We will be using an SNS (Simple Notification Service) topic to handle adding a new image message to the thumbnail generators queue and we can easily add other actions when a new image is uploaded. We will be adding machine learning and AI by using the Amazon Rekognition service to process our images and identify objects in the images to use as tags within our application. This lab includes:
 
-- Update our CloudFormation Template to include an SNS topic, an SQS queue and the Lambda processor
-- Update our site code to remove the thumbnail creation logic and publish a message onto the SNS topic
-- Add an additional SQS queue and Lambda processor for the AI/ML processor
-- Upload a new image to confirm everything is working
+- Updating our CloudFormation Template to include an SNS topic, an SQS queue and the Lambda processor
+- Updating our site code to remove the thumbnail creation logic and publish a message onto the SNS topic
+- Adding an additional SQS queue and Lambda processor for the AI/ML processor
+- Uploading a new image to confirm everything is working
 
 #### Reference Architecture
 
@@ -28,7 +28,7 @@ We will be sending messages from the web server to the lambda workers using SNS 
 
 Firstly we will create the new SNS topic and SQS queues.
 
-1) Open / switch to the CloudFormation infra.yaml template you have been working on in the previous labs in your favourite text editor.
+1) Open / switch to the CloudFormation infra.yml template you have been working on in the previous labs in your favourite text editor.
 
 2) Add the following SQS queues between the APIALBTG and the Outputs section.
 
@@ -229,11 +229,11 @@ We are giving the Lambda the following permissions:
       FunctionName: !GetAtt [TagsLambda, Arn]
 ```
 
-12) Save the changes to your infra.yaml file and create a zip file containing the updated infra.yaml.
+12) Save the changes to your infra.yml file and create an updated zip file.
 
 13) Back in AWS console, select the S3 service.
 
-14) Select our data bucket. Click Upload and drop the infra.yaml.zip file from step 12 onto the upload screen. Click Upload.
+14) Select our data bucket. Click Upload and drop the infra.yml.zip file from step 12 onto the upload screen. Click Upload.
 
 #### Updating the Server API
 
