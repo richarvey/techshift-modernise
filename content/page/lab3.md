@@ -460,7 +460,7 @@ Now that we have our SPA in CodeCommit, we need to push it somewhere that we can
 
 58) Back in AWS console, select the S3 service.
 
-59) Select our data bucket. Click Upload and drop the Infra.yaml.zip file from step 57 onto the upload screen. Click Upload.
+59) Select our data bucket. Click Upload and drop the Infra.yml.zip file from step 57 onto the upload screen. Click Upload.
 
 60) Select the CodePipeline service and select the TSABootstrap-Pipeline to confirm it has run. It may take a few minutes to start. The CloudFront distribution may take up to 10-15 minutes to start. This is due to the time it takes to propagate the new distribution to all the CloudFront Points of Presence. Once the update is finished, both Source and Deploy will show Succeeded.
 
@@ -474,7 +474,7 @@ In this lab you achieved a lot. You have taken a big step towards modernising yo
 - Copied the SPA and API code into the new repositories.
 - Moved our uploaded image assets to S3.
 - Updating our CloudFormation template to include a CodePipeline, S3 bucket and CloudFront distribution.
-- Run the CodePipeline to deply the SPA into the S3 bucket.
+- Run the CodePipeline to deploy the SPA into the S3 bucket.
 - Copy our image assets to our asset S3 bucket.
 - Update our application to store static assets such as thumbnails and images in the S3 bucket.
 
