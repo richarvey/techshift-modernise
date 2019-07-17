@@ -39,7 +39,7 @@ Docker containers make it easier to run more code on each server, improving your
 
 #### When to use Docker
 
-You can use Docker containers as a core building block creating modern applications and platforms. Docker makes it easy to build and run distributed microservices architecures, deploy your code with standardized continuous integration and delivery pipelines, build highly-scalable data processing systems, and create fully-managed platforms for your developers.
+You can use Docker containers as a core building block creating modern applications and platforms. Docker makes it easy to build and run distributed microservices architectures, deploy your code with standardized continuous integration and delivery pipelines, build highly-scalable data processing systems, and create fully-managed platforms for your developers.
 
 ![/img/docker-2.pg](/img/docker-2.png)
 
