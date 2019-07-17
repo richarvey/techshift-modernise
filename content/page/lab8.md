@@ -291,7 +291,7 @@ In this lab we have taken the application and decomposed it by moving the thumbn
 
 ### Talking points
 
-- How could update the SPA to automatically load the new thumbnail and tags?
+- How could we update the SPA to automatically load the new thumbnail and tags?
 
 #### Clean-up
 
