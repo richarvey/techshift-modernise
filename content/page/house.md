@@ -29,5 +29,6 @@ It is good to check for these items:
 - Look at CloudWatch Monitoring actions
 - Explore <a href="https://aws.amazon.com/cdk/">AWS CDK</a>, an open source software development framework to model and provision your cloud application resources using familiar programming languages
 - Explore <a href="https://aws.amazon.com/controltower/">AWS Control Tower</a>, a service providing the easiest way to set up and govern a new, secure, multi-account AWS environment based on best practices established through AWS’ experience working with thousands of enterprises as they move to the cloud.
+- <a href="https://github.com/aws-samples/aws-service-catalog-terraform-reference-architecture">Service Catalog Terraform Reference Architecture</a>
 
 We are looking for feedback on this event and the content, contributions are welcome as GitHub issues or pull requests.
