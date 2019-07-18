@@ -106,7 +106,7 @@ For the two Lambda processors, we will be uploading the source using a zip file.
 
 The source can be viewed by extracting the zip file and opening the index.js file in a text editor. When Lambda executes the function it calls the function specified in the Lambda setup. In our case the handler is the exported function called handler.
 
-7) In the AWS console, select the S3 service. Open the DataBucket by clicking on the DataBucket name. Click Create folder and when prompted, enter the name lambda-source and click Save. Open the lambda-source folder by clicking the folder name.
+7) In the AWS console, select the S3 service. Open the DataBucket by clicking on the DataBucket name (e.g. tsa-gallery.yourcompany.com or the name you used for your bucket created earlier). Click Create folder and when prompted, enter the name lambda-source and click Save. Open the lambda-source folder by clicking the folder name.
 
 8) Click Upload then click Add files. Select the two zip files you downloaded and click Upload. These files should be named tags.zip and thumbnails.zip.
 
