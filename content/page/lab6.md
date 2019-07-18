@@ -355,7 +355,7 @@ docker info
  - In the AWS console, select the IAM service and click Roles from the left hand menu.
  - Click Create role.
  - Click EC2 under the Choose the service that will use this role and click Next: Permissions.
- - As this is a temporary role, we will just add the managed policy: 'AmazonEC2ContainerRegistryReadOnly'. This provides the instance read-only access to our ECR repository. IAM policies can be extremely granular and it is best practice to only add the specific permissions that are needed. In our CloudFormation created roles, we are using more specific permissions. Tick the tickbox on the 'AmazonEC2ContainerRegistryReadOnly' line.
+ - As this is a temporary role, we will just add the managed policies: 'AmazonEC2ContainerRegistryReadOnly', 'SecretsManagerReadWrite', 'AmazonDynamoDBFullAccess'. This provides the instance read-only access to our ECR repository, Read/Write permissions to SecretsManager and Full access to DynamoDB. IAM policies can be extremely granular and it is best practice to only add the specific permissions that are needed. In our CloudFormation created roles, we are using more specific permissions. Tick the tickbox on the 'AmazonEC2ContainerRegistryReadOnly', 'SecretsManagerReadWrite' and 'AmazonDynamoDBFullAccess' lines.
  - Click Next: Tags and Next: Review.
  - Give the new role a Role name of 'TempServerRole' and click Create role.
 
@@ -391,7 +391,7 @@ docker run -d -p 3000:3000 **Copied URI**:latest
 curl http://localhost:3000/api/health
 ```
 
-The server will respond with {"healthOk":true,"buildNum":0}. We can also test the database is connecting properly by requesting the list of categories. Enter the following command.
+The server will respond with {"healthOk":true,"buildNum":1}. We can also test the database is connecting properly by requesting the list of categories. Enter the following command.
 
 ```
 curl http://localhost:3000/api/categories
