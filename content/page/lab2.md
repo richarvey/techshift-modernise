@@ -39,7 +39,7 @@ If you don't have the template, it can be copied from 'Assets' on the Lab 1 page
         - Fn::GetAZs: !Ref 'AWS::Region'
       VpcId: !Ref VPC
       CidrBlock: 10.11.16.0/20
-      MapPublicIpOnLaunch: false
+      MapPublicIpOnLaunch: true 
       Tags:
         - Key: 'Name'
           Value: !Join ['', [!Ref 'AWS::StackName', '::PublicSubnetB'] ]
@@ -67,7 +67,7 @@ If you don't have the template, it can be copied from 'Assets' on the Lab 1 page
         - Fn::GetAZs: !Ref 'AWS::Region'
       VpcId: !Ref VPC
       CidrBlock: 10.11.32.0/20
-      MapPublicIpOnLaunch: true
+      MapPublicIpOnLaunch: false 
       Tags:
         - Key: 'Name'
           Value: !Join ['', [!Ref 'AWS::StackName', '::PrivateSubnetA'] ]
@@ -80,7 +80,7 @@ If you don't have the template, it can be copied from 'Assets' on the Lab 1 page
         - Fn::GetAZs: !Ref 'AWS::Region'
       VpcId: !Ref VPC
       CidrBlock: 10.11.48.0/20
-      MapPublicIpOnLaunch: true
+      MapPublicIpOnLaunch: false 
       Tags:
         - Key: 'Name'
           Value: !Join ['', [!Ref 'AWS::StackName', '::PrivateSubnetB'] ]
