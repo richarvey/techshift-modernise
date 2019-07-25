@@ -214,6 +214,42 @@ Navigation
   border-bottom: none;
 }
 
+.sidebar-nav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 730px) {
+  .sidebar-nav {padding: 0; margin-top: -10px;}
+  .sidebar-nav a.norm {display: none;}
+  .sidebar-nav li.norm {display: none;}
+  .sidebar-nav-active {display: none;}
+  .sidebar-nav a:not(:first-child) {display: none;}
+  .sidebar-nav li.icon {
+    float: right;
+    display: block;
+  }
+  .sidebar-nav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .sidebar-nav.responsive {position: relative;}
+  .sidebar-nav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .sidebar-nav.responsive li.norm {display: block;}
+  .sidebar-nav.responsive a.norm {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+}
+</
+
 
 /*
 Layout
@@ -561,10 +597,28 @@ Mobile Styles
 ==================================
 */
 
-@media screen and (max-width: 40.5em) {
+@media screen and (max-width: 730px) {
 
     .main-content {
-        margin-top: 1.5em;
+        margin-top: 1.em;
+    }
+    
+    .logo {
+	display: none;
+        visibility: hidden;
+    }
+
+    .site-title {
+	font-size: 0.9em;
+	font-family: "Open Sans", Arial, sans-serif;
+	font-weight: normal;
+	color: #2e27ad;
+	margin: 0;
+	display: inline-block;
+    }
+
+    img {
+	    max-width: 80%
     }
 
 }

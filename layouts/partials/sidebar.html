@@ -1,14 +1,17 @@
 {{$currentNode := .}}
 <aside>
   <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
-  <nav class="sidebar-nav" role="navigation">
+  <nav class="sidebar-nav" role="navigation" id="sidebar-nav">
     <ul>
       {{ $section := where $.Site.RegularPages "Section" "page"}}
       {{ range $section }}
-      <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}sidebar-nav-active {{ end }}">
-	      <a href="{{ .Page.Permalink }}">{{ .Title | title }}</a>
+      <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}sidebar-nav-active{{ else }}norm{{ end }}">
+	      <a class="norm" href="{{ .Page.Permalink }}">{{ .Title | title }}</a>
       </li>
-      {{ end }}
+      {{ end }}  
+      <li class=".icon">
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+      </li>
     </ul>
   </nav>
 </aside>

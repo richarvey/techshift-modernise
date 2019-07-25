@@ -122,3 +122,11 @@
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+
+@media screen and (max-width: 40.5em) {
+
+	.github-fork-ribbon {
+		visibility: hidden;
+	}	
+
+}	

@@ -3,6 +3,17 @@
 <link rel="stylesheet" href="/assets/css/gh-fork-ribbon.css" />
 <a class="github-fork-ribbon" href="{{.Site.Params.repo}}" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a> 
 
+<script>
+function myFunction() {
+  var x = document.getElementById("sidebar-nav");
+  if (x.className === "sidebar-nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "sidebar-nav";
+  }
+}
+</script>
+
 {{ .Content }}
 
 <!--

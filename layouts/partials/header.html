@@ -1,4 +1,7 @@
 <header role="banner">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <div class="wrap">
     {{ if isset .Site.Params "logourl" }}
       <img class="logo" src="{{ .Site.BaseURL}}{{ .Site.Params.logourl }}" alt="{{ .Site.Params.logoalt }}">
@@ -17,4 +20,16 @@
         }
       {{ end }}
     </style>
+
+    <script>
+function myFunction() {
+  var x = document.getElementById("sidebar-nav");
+  if (x.className === "sidebar-nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "sidebar-nav";
+  }
+}
+</script>
+
 </header>
