@@ -222,7 +222,6 @@ Navigation
   .sidebar-nav {padding: 0; margin-top: -10px;}
   .sidebar-nav a.norm {display: none;}
   .sidebar-nav li.norm {display: none;}
-  .sidebar-nav-active {display: none;}
   .sidebar-nav a:not(:first-child) {display: none;}
   .sidebar-nav li.icon {
     float: right;
@@ -233,6 +232,17 @@ Navigation
     display: block;
   }
 
+  .sidebar-nav .sidebar-nav-active {
+    border: none; 
+  }
+  
+  .sidebar-nav.responsive .sidebar-nav-active {
+    color: #161E2D;
+    border-left: 4px solid #FF9900;
+    background-color: transparent;
+    border-bottom: 1px solid #babbbd;
+  }
+  
   .sidebar-nav.responsive {position: relative;}
   .sidebar-nav.responsive .icon {
     position: absolute;
