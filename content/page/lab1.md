@@ -11,7 +11,7 @@ The objective of this lab is to get your account setup and ready for the TechShi
 
 #### Reference Architecture
 
-![/img/arch/arch1.png](/img/arch/arch1.png)
+[![/img/arch/arch1.png](/img/arch/arch1.png)](/img/arch/arch1-big.png)
 
 ### Lab Guide
 

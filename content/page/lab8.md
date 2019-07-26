@@ -18,7 +18,7 @@ We will be using an SNS (Simple Notification Service) topic to handle adding a n
 
 #### Reference Architecture
 
-![/img/arch/arch8.png](/img/arch/arch8.png)
+[![/img/arch/arch8.png](/img/arch/arch8.png)](/img/arch/arch8-big.png)
 
 ### Lab Guide
 

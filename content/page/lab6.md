@@ -16,7 +16,7 @@ The objective of this lab is to take our existing server based API and build it 
 
 #### Reference Architecture
 
-![/img/arch/arch6.png](/img/arch/arch6.png)
+[![/img/arch/arch6.png](/img/arch/arch6.png)](/img/arch/arch6-big.png)
 
 ### Lab Guide
 

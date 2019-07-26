@@ -14,7 +14,7 @@ The objective of this lab is to build a solid base we can use to modernise your 
 
 #### Reference Architecture
 
-![/img/arch/arch2.png](/img/arch/arch2.png)
+[![/img/arch/arch2.png](/img/arch/arch2.png)](/img/arch/arch2-big.png)
 
 #### Lab Guide
 

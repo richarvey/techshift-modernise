@@ -17,7 +17,7 @@ The objective of this lab is move the static portions of the solution from the a
 
 #### Reference Architecture
 
-![/img/arch/arch3.png](/img/arch/arch3.png)
+[![/img/arch/arch3.png](/img/arch/arch3.png)](/img/arch/arch3-big.png)
 
 ### Lab Guide
 

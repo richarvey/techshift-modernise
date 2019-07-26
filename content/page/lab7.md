@@ -15,7 +15,7 @@ The objective of this lab is to take our new docker image and host it using ECS 
 
 #### Reference Architecture
 
-![/img/arch/arch7.png](/img/arch/arch7.png)
+[![/img/arch/arch7.png](/img/arch/arch7.png)](/img/arch/arch7-big.png)
 
 ### Lab Guide
 

@@ -14,7 +14,7 @@ The objective of this lab is to move the session cache to a DynamoDB. This lab i
 
 #### Reference Architecture
 
-![/img/arch/arch5.png](/img/arch/arch5.png)
+[![/img/arch/arch5.png](/img/arch/arch5.png)](/img/arch/arch5-big.png)
 
 ### Lab Guide
 

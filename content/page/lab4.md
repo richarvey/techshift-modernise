@@ -16,7 +16,7 @@ The objective of this lab is move our database off the single instance to highly
 
 #### Reference Architecture
 
-![/img/arch/arch4.png](/img/arch/arch4.png)
+[![/img/arch/arch4.png](/img/arch/arch4.png)](/img/arch/arch4-big.png)
 
 ### Lab Guide
 
