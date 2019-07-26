@@ -371,7 +371,7 @@ In this lab you used CloudFormation to setup a VPC structure or landing zone you
 
 ### Clean-up
 
-To remove the resources you have created thus far:
+You only need to clean up if you are **not** continuing the labs. If you are you **don't** need to do these steps, however to remove the resources you have created thus far:
 
 1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts bucket. This will be named something like tsabootstrap-pipelineartifacts-?????. You can empty the bucket using the 'Empty' button after selecting the bucket in S3.
 

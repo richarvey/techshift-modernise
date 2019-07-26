@@ -265,7 +265,7 @@ In this lab we have setup a servlerless database cluster, migrated our data into
 
 ### Clean-up
 
-To remove the resources you have created thus far:
+You only need to clean up if you are **not** continuing the labs. If you are you **don't** need to do these steps, however to remove the resources you have created thus far:
 
 1) Select the S3 service. You will need to empty the DataBucketName bucket, along with the pipeline artifacts buckets. These will named like tsa-bootstrap-pipelineartifacts-????? and *tsagallery-pipelineartifacts-?????**. You can empty a bucket using the Empty button after selecting the bucket in S3.
 
