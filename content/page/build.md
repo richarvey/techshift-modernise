@@ -37,10 +37,10 @@ Lists are defined as:
 
 In this workshop we are going to iteratively build a photo gallery solution. We will start out with a simple application built on EC2 as a monolith and then break it down into a more cloud ready application that can be easily deployed. The initial architecture is pretty simple:
 
-![/img/arch/arch1.png](/img/arch/arch1.png)
+[![/img/arch/arch1.png](/img/arch/arch1.png)](/img/arch/arch1-big.png)
 
 ### Target Architecture
 
 Over the course the next two days each lab will split out the application components, such as the database, static assets and key functions. We will then use a modern cloud approach to break down the monolithic application into different services by integrating services such as Amazon Aurora, Amazon S3, Amazon CloudFront and AWS Lambda. This will be built using source control in AWS CodeCommit and a Pipline implemented in AWS CodePipeline to build a CI/CD solution. The conclusion is a modern cloud based microservices deployment.
 
-![/img/arch/arch8.png](/img/arch/arch8.png)
+[![/img/arch/arch8.png](/img/arch/arch8.png)](/img/arch/arch8-big.png)
